@@ -18,6 +18,11 @@ elif which yum &> /dev/null; then
 elif which zypper &> /dev/null; then
   zypper -n -q install python3 python3-pip
   PIP3_PATH=$(which pip3)
+elif which pacman &> /dev/null; then
+  pacman -Syu --noconfirm
+  pacman -S --noconfirm python python-pip
+   # python3-pip
+  PIP3_PATH=$(which pip3)
 else
   >&2 echo "Unsupported package manager"
   exit 1

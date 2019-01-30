@@ -15,6 +15,9 @@ elif which yum &> /dev/null; then
   yum install -y python36u python36u-pip
   #yum -y install python-pip
   PIP3_PATH=$(which pip3.6)
+elif which zypper &> /dev/null; then
+  zypper -n -q install python3 python3-pip
+  PIP3_PATH=$(which pip3)
 else
   >&2 echo "Unsupported package manager"
   exit 1

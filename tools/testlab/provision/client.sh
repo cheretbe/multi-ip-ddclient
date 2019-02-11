@@ -5,7 +5,7 @@ set -euo pipefail
 if which apt-get &> /dev/null; then
   apt-get -y -q update
   apt-get -y -q upgrade
-  apt-get -y -q install python3-pip
+  apt-get -y -q install python3-pip git mc
 elif which yum &> /dev/null; then
   yum -y update
   # yum -y install centos-release-scl
@@ -29,5 +29,9 @@ fi
 
 python3 --version
 pip3 --version
+
+if [ -e "/media/sf_debug/" ]; then
+  usermod -a -G vboxsf vagrant
+fi
 
 exit 0

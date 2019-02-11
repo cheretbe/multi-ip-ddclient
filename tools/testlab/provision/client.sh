@@ -11,7 +11,7 @@ elif which yum &> /dev/null; then
   # yum -y install centos-release-scl
   # yum -y install rh-python36
   yum -y install epel-release
-  yum -y install python36 python36-pip
+  yum -y install python36 python36-pip git mc
 
   # ln -fs /opt/rh/rh-python36/root/usr/bin/python3.6 /usr/bin/python3
   # ln -fs /opt/rh/rh-python36/root/usr/bin/pip3.6 /usr/bin/pip3

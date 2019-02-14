@@ -6,6 +6,9 @@ if which apt-get &> /dev/null; then
   apt-get -y -q update
   apt-get -y -q upgrade
   apt-get -y -q install python3-pip git mc
+elif which dnf &> /dev/null; then
+  dnf -y update
+  dnf -y install python3 python3-pip
 elif which yum &> /dev/null; then
   yum -y update
   # yum -y install centos-release-scl

@@ -1,6 +1,6 @@
 ```shell
 vagrant ssh-config > /tmp/vagrant-ssh-config
-scp -F /tmp/vagrant-ssh-config ~/keys/test-key-pair.pem default:.ssh/test-key-pair.pem
+scp -F /tmp/vagrant-ssh-config ~/keys/aws-test-key-pair.pem default:.ssh/aws-test-key-pair.pem
 ```
 
 ```shell
@@ -9,25 +9,8 @@ aws ec2 describe-vpcs --filters Name=tag:Name,Values=ddclient-test
 vpc_id=$(aws ec2 describe-vpcs --filters Name=tag:Name,Values=ddclient-test --query 'Vpcs[0].VpcId' --output text)
 aws ec2 describe-subnets --filters "Name=vpc-id,Values=$vpc_id" --query "Subnets[*].[CidrBlock,SubnetId]"
 
-# Create a VPC
-vpc_id=$(aws ec2 create-vpc --cidr-block 10.0.0.0/16 --query 'Vpc.VpcId' --output text)
-echo $vpc_id
 
-# Name the VPC
-aws ec2 create-tags --resources "$vpc_id" --tags Key=Name,Value="ddclient-test"
 
-# Create subnets
-public_subnet_id=$(aws ec2 create-subnet --vpc-id $vpc_id --cidr-block 10.0.1.0/24 --query Subnet.SubnetId --output text)
-echo $public_subnet_id
-private_subnet_id=$(aws ec2 create-subnet --vpc-id $vpc_id --cidr-block 10.0.0.0/24 --query Subnet.SubnetId --output text)
-echo $private_subnet_id
-
-# Create a gateway
-gateway_id=$(aws ec2 create-internet-gateway --query 'InternetGateway.InternetGatewayId' --output text)
-echo $gateway_id
-
-# Attach the gateway to the VPC
-aws ec2 attach-internet-gateway --vpc-id $vpc_id --internet-gateway-id $gateway_id
 
 # Create a custom route table for the VPC
 route_table_id=$(aws ec2 create-route-table --vpc-id $vpc_id --query 'RouteTable.RouteTableId' --output text)
@@ -70,11 +53,4 @@ aws ec2 wait instance-terminated --instance-ids $instance_id
 # Delete the security group
 security_group_id=$(aws ec2 describe-security-groups --filters Name=group-name,Values=ddclient-test-ssh-access --query "SecurityGroups[0].GroupId" --output text)
 aws ec2 delete-security-group --group-id $security_group_id
-
-
-vpc_id=$(aws ec2 describe-vpcs --filters Name=tag:Name,Values=ddclient-test --query 'Vpcs[0].VpcId' --output text)
-# Delete subnets
-for i in `aws ec2 describe-subnets --filters "Name=vpc-id,Values=$vpc_id" --query "Subnets[*].SubnetId" --output text`; do echo Deleting subnet $i; aws ec2 delete-subnet --subnet-id=$i; done
-
-aws ec2 delete-vpc --vpc-id $vpc_id
 ```

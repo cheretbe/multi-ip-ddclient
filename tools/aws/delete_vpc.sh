@@ -8,6 +8,13 @@
 #             or zero if no command exited with a non-zero status
 set -euo pipefail
 
+echo "Getting security group ID"
+security_group_id=$(aws ec2 describe-security-groups \
+  --filters Name=group-name,Values=ddclient-test-ssh-access \
+  --query "SecurityGroups[0].GroupId" --output text)
+echo "Deleting security group $security_group_id"
+aws ec2 delete-security-group --group-id $security_group_id
+
 echo "Getting VPC ID"
 vpc_id=$(aws ec2 describe-vpcs --filters Name=tag:Name,Values=ddclient-test \
   --query "Vpcs[0].VpcId" --output text)
@@ -21,16 +28,22 @@ for subnet_id in $subnet_ids; do
   aws ec2 delete-subnet --subnet-id=$subnet_id
 done
 
-echo "Getting gateway ID"
-gateway_id=$(aws ec2 describe-internet-gateways \
+echo "Getting route table ID"
+route_table_id=$(aws ec2 describe-route-tables \
   --filters Name=tag:Name,Values=ddclient-test \
+  --query "RouteTables[0].RouteTableId" --output text)
+echo "Deleting route table $route_table_id"
+aws ec2 delete-route-table --route-table-id $route_table_id
+
+echo "Getting Internet gateway ID"
+gateway_id=$(aws ec2 describe-internet-gateways --filters Name=tag:Name,Values=ddclient-test \
   --query "InternetGateways[0].InternetGatewayId" --output text)
 echo Gateway ID: $gateway_id
 
-echo "Detaching the gateway from the VPC"
+echo "Detaching the Internet gateway from the VPC"
 aws ec2 detach-internet-gateway --internet-gateway-id $gateway_id --vpc-id $vpc_id
 
-echo "Deleting the gateway"
+echo "Deleting the Internet gateway"
 aws ec2 delete-internet-gateway --internet-gateway-id $gateway_id
 
 echo "Deleting the VPC"

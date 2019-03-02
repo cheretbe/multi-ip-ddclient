@@ -45,3 +45,31 @@ aws ec2 create-tags --resources $gateway_id --tags Key=Name,Value="ddclient-test
 
 echo "Attaching the gateway to the VPC"
 aws ec2 attach-internet-gateway --vpc-id $vpc_id --internet-gateway-id $gateway_id
+
+echo "Creating a custom route table for the VPC"
+route_table_id=$(aws ec2 create-route-table --vpc-id $vpc_id --query \
+  "RouteTable.RouteTableId" --output text)
+echo Route table ID: $route_table_id
+echo "Setting route table name to 'ddclient-test'"
+aws ec2 create-tags --resources $route_table_id --tags Key=Name,Value="ddclient-test"
+
+echo "Adding a default route"
+aws ec2 create-route --route-table-id $route_table_id \
+  --destination-cidr-block 0.0.0.0/0 --gateway-id $gateway_id > /dev/null
+
+echo "Associating the public subnet with the route table"
+aws ec2 associate-route-table --subnet-id $public_subnet_id \
+  --route-table-id $route_table_id > /dev/null
+
+echo "Modifying the public subnet to automatically map a public IP on instance launch"
+aws ec2 modify-subnet-attribute --subnet-id $public_subnet_id --map-public-ip-on-launch
+
+echo "Creating a security group for SSH access in the VPC"
+security_group_id=$(aws ec2 create-security-group --group-name ddclient-test-ssh-access \
+  --description "Security group for SSH access" \
+  --vpc-id $vpc_id --query "GroupId" --output text)
+echo Security group ID: $security_group_id
+
+echo "Adding a rule that allows SSH access from anywhere"
+aws ec2 authorize-security-group-ingress --group-id $security_group_id \
+  --protocol tcp --port 22 --cidr 0.0.0.0/0

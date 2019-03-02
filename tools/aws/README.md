@@ -26,6 +26,12 @@ instance_id=$(aws ec2 run-instances --image-id $image_id --count 1 \
   --subnet-id $public_subnet_id \
   --query "Instances[0].InstanceId" --output text)
 echo instance_id: $instance_id
+
+# For NAT instance only
+# aws ec2 modify-instance-attribute --instance-id $instance_id --no-source-dest-check
+
+aws ec2 create-tags --resources $instance_id --tags Key=Name,Value=ddclient-test
+
 aws ec2 wait instance-running --instance-ids $instance_id
 
 # Get instance's public IP address and connect to it

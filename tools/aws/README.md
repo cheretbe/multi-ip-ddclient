@@ -1,6 +1,10 @@
 ```shell
 vagrant ssh-config > /tmp/vagrant-ssh-config
 scp -F /tmp/vagrant-ssh-config ~/keys/aws-test-key-pair.pem default:.ssh/aws-test-key-pair.pem
+# Windows
+vagrant ssh-config > %TEMP%\vagrant-ssh-config
+scp -F %TEMP%\vagrant-ssh-config %USERPROFILE%\keys\aws-test-key-pair.pem default:.ssh/aws-test-key-pair.pem
+DEL %TEMP%\vagrant-ssh-config
 ```
 
 ```shell

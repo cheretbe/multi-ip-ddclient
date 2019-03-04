@@ -23,14 +23,17 @@ echo VPC ID: $vpc_id
 echo "Setting VPC name to 'ddclient-test'"
 aws ec2 create-tags --resources "$vpc_id" --tags Key=Name,Value="ddclient-test"
 
-echo "Creating subnet 10.0.1.0/24"
+echo "Creating public subnet 10.0.1.0/24"
 public_subnet_id=$(aws ec2 create-subnet --vpc-id $vpc_id --cidr-block 10.0.1.0/24 \
   --query "Subnet.SubnetId" --output text)
 echo Subnet ID: $public_subnet_id
 echo "Setting subnet name to 'ddclient-test-public'"
 aws ec2 create-tags --resources $public_subnet_id --tags Key=Name,Value="ddclient-test-public"
 
-echo "Creating subnet 10.0.0.0/24"
+echo "Modifying the public subnet to automatically map a public IP on instance launch"
+aws ec2 modify-subnet-attribute --subnet-id $public_subnet_id --map-public-ip-on-launch
+
+echo "Creating private subnet 10.0.0.0/24"
 private_subnet_id=$(aws ec2 create-subnet --vpc-id $vpc_id --cidr-block 10.0.0.0/24 \
   --query Subnet.SubnetId --output text)
 echo Subnet ID: $private_subnet_id
@@ -47,22 +50,20 @@ echo "Attaching the gateway to the VPC"
 aws ec2 attach-internet-gateway --vpc-id $vpc_id --internet-gateway-id $gateway_id
 
 echo "Creating a custom route table for the VPC"
-route_table_id=$(aws ec2 create-route-table --vpc-id $vpc_id --query \
+public_route_table_id=$(aws ec2 create-route-table --vpc-id $vpc_id --query \
   "RouteTable.RouteTableId" --output text)
-echo Route table ID: $route_table_id
-echo "Setting route table name to 'ddclient-test'"
-aws ec2 create-tags --resources $route_table_id --tags Key=Name,Value="ddclient-test"
+echo Route table ID: $public_route_table_id
+echo "Setting route table name to 'ddclient-test-public'"
+aws ec2 create-tags --resources $public_route_table_id \
+  --tags Key=Name,Value="ddclient-test-public"
 
 echo "Adding a default route"
-aws ec2 create-route --route-table-id $route_table_id \
+aws ec2 create-route --route-table-id $public_route_table_id \
   --destination-cidr-block 0.0.0.0/0 --gateway-id $gateway_id > /dev/null
 
-echo "Associating the public subnet with the route table"
+echo "Associating the public subnet with the public route table"
 aws ec2 associate-route-table --subnet-id $public_subnet_id \
-  --route-table-id $route_table_id > /dev/null
-
-echo "Modifying the public subnet to automatically map a public IP on instance launch"
-aws ec2 modify-subnet-attribute --subnet-id $public_subnet_id --map-public-ip-on-launch
+  --route-table-id $public_route_table_id > /dev/null
 
 echo "Creating a security group for SSH access in the VPC"
 security_group_id=$(aws ec2 create-security-group --group-name ddclient-test-ssh-access \
@@ -73,3 +74,21 @@ echo Security group ID: $security_group_id
 echo "Adding a rule that allows SSH access from anywhere"
 aws ec2 authorize-security-group-ingress --group-id $security_group_id \
   --protocol tcp --port 22 --cidr 0.0.0.0/0
+
+echo "Creating a custom route table for the VPC"
+private_route_table_id=$(aws ec2 create-route-table --vpc-id $vpc_id --query \
+  "RouteTable.RouteTableId" --output text)
+echo Route table ID: $private_route_table_id
+echo "Setting route table name to 'ddclient-test-private'"
+aws ec2 create-tags --resources $private_route_table_id \
+  --tags Key=Name,Value="ddclient-test-private"
+
+echo "Creating a security group for private subnet in the VPC"
+private_security_group_id=$(aws ec2 create-security-group --group-name ddclient-test-private \
+  --description "Security group for private subnet" \
+  --vpc-id $vpc_id --query "GroupId" --output text)
+echo Security group ID: $private_security_group_id
+
+echo "Adding a rule that allows SSH access from the public subnet"
+aws ec2 authorize-security-group-ingress --group-id $private_security_group_id \
+  --protocol tcp --port 22 --cidr 10.0.1.0/24

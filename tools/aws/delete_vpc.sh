@@ -8,12 +8,19 @@
 #             or zero if no command exited with a non-zero status
 set -euo pipefail
 
-echo "Getting security group ID"
+echo "Getting public security group ID"
 security_group_id=$(aws ec2 describe-security-groups \
   --filters Name=group-name,Values=ddclient-test-ssh-access \
   --query "SecurityGroups[0].GroupId" --output text)
 echo "Deleting security group $security_group_id"
 aws ec2 delete-security-group --group-id $security_group_id
+
+echo "Getting private security group ID"
+private_security_group_id=$(aws ec2 describe-security-groups \
+  --filters Name=group-name,Values=ddclient-test-private \
+  --query "SecurityGroups[0].GroupId" --output text)
+echo "Deleting security group $private_security_group_id"
+aws ec2 delete-security-group --group-id $private_security_group_id
 
 echo "Getting VPC ID"
 vpc_id=$(aws ec2 describe-vpcs --filters Name=tag:Name,Values=ddclient-test \
@@ -28,12 +35,19 @@ for subnet_id in $subnet_ids; do
   aws ec2 delete-subnet --subnet-id=$subnet_id
 done
 
-echo "Getting route table ID"
-route_table_id=$(aws ec2 describe-route-tables \
-  --filters Name=tag:Name,Values=ddclient-test \
+echo "Getting public route table ID"
+public_route_table_id=$(aws ec2 describe-route-tables \
+  --filters Name=tag:Name,Values=ddclient-test-public \
   --query "RouteTables[0].RouteTableId" --output text)
-echo "Deleting route table $route_table_id"
-aws ec2 delete-route-table --route-table-id $route_table_id
+echo "Deleting route table $public_route_table_id"
+aws ec2 delete-route-table --route-table-id $public_route_table_id
+
+echo "Getting private route table ID"
+private_route_table_id=$(aws ec2 describe-route-tables \
+  --filters Name=tag:Name,Values=ddclient-test-private \
+  --query "RouteTables[0].RouteTableId" --output text)
+echo "Deleting route table $private_route_table_id"
+aws ec2 delete-route-table --route-table-id $private_route_table_id
 
 echo "Getting Internet gateway ID"
 gateway_id=$(aws ec2 describe-internet-gateways --filters Name=tag:Name,Values=ddclient-test \

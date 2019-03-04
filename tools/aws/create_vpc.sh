@@ -83,6 +83,10 @@ echo "Setting route table name to 'ddclient-test-private'"
 aws ec2 create-tags --resources $private_route_table_id \
   --tags Key=Name,Value="ddclient-test-private"
 
+echo "Associating the private subnet with the private route table"
+aws ec2 associate-route-table --subnet-id $private_subnet_id \
+  --route-table-id $private_route_table_id > /dev/null
+
 echo "Creating a security group for private subnet in the VPC"
 private_security_group_id=$(aws ec2 create-security-group --group-name ddclient-test-private \
   --description "Security group for private subnet" \

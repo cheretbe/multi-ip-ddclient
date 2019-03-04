@@ -28,7 +28,7 @@ if [ $is_client -eq 1 ]; then
   echo "Creating client instance"
   private_ip="10.0.0.100"
   security_group_name="ddclient-test-private"
-  subnet_name="ddclient-test-public"
+  subnet_name="ddclient-test-private"
   instance_name="ddclient-test-client"
 else
   echo "Creating router instance"

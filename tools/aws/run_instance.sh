@@ -33,7 +33,7 @@ if [ $is_client -eq 1 ]; then
 else
   echo "Creating router instance"
   private_ip="10.0.1.11"
-  security_group_name="ddclient-test-ssh-access"
+  security_group_name="ddclient-test-public"
   subnet_name="ddclient-test-public"
   instance_name="ddclient-test-router"
 fi

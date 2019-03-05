@@ -65,14 +65,15 @@ echo "Associating the public subnet with the public route table"
 aws ec2 associate-route-table --subnet-id $public_subnet_id \
   --route-table-id $public_route_table_id > /dev/null
 
-echo "Creating a security group for SSH access in the VPC"
-security_group_id=$(aws ec2 create-security-group --group-name ddclient-test-ssh-access \
+echo "Creating a security group for public subnet in the VPC"
+public_security_group_id=$(aws ec2 create-security-group \
+  --group-name ddclient-test-public \
   --description "Security group for SSH access" \
   --vpc-id $vpc_id --query "GroupId" --output text)
-echo Security group ID: $security_group_id
+echo Security group ID: $public_security_group_id
 
 echo "Adding a rule that allows SSH access from anywhere"
-aws ec2 authorize-security-group-ingress --group-id $security_group_id \
+aws ec2 authorize-security-group-ingress --group-id $public_security_group_id \
   --protocol tcp --port 22 --cidr 0.0.0.0/0
 
 echo "Creating a custom route table for the VPC"

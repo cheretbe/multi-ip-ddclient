@@ -9,11 +9,11 @@
 set -euo pipefail
 
 echo "Getting public security group ID"
-security_group_id=$(aws ec2 describe-security-groups \
-  --filters Name=group-name,Values=ddclient-test-ssh-access \
+public_security_group_id=$(aws ec2 describe-security-groups \
+  --filters Name=group-name,Values=ddclient-test-public \
   --query "SecurityGroups[0].GroupId" --output text)
-echo "Deleting security group $security_group_id"
-aws ec2 delete-security-group --group-id $security_group_id
+echo "Deleting security group $public_security_group_id"
+aws ec2 delete-security-group --group-id $public_security_group_id
 
 echo "Getting private security group ID"
 private_security_group_id=$(aws ec2 describe-security-groups \

@@ -8,6 +8,13 @@ DEL %TEMP%\vagrant-ssh-config
 ```
 
 ```shell
+echo 1 > /proc/sys/net/ipv4/ip_forward
+iptables --table nat --append POSTROUTING -s 10.0.0.0/24 --out-interface eth0 -j MASQUERADE
+iptables --table nat --append PREROUTING --in-interface eth0 \
+  --protocol tcp --dport 2022 -j DNAT --to 10.0.0.100:22
+```
+
+```shell
 # Create VPC
 /media/sf_debug/multi-ip-ddclient/tools/aws/create_vpc.sh
 

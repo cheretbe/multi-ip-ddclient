@@ -8,6 +8,7 @@
 #             or zero if no command exited with a non-zero status
 set -euo pipefail
 
+script_path="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 is_client=0
 image_name="ubuntu/images/hvm-ssd/ubuntu-xenial*"
 
@@ -30,6 +31,17 @@ if [ $is_client -eq 1 ]; then
   security_group_name="ddclient-test-private"
   subnet_name="ddclient-test-private"
   instance_name="ddclient-test-client"
+
+  echo "Getting router instance ID"
+  router_instance_id=$(aws ec2 describe-instances \
+    --filters Name=tag:Name,Values=ddclient-test-router \
+    --query "Reservations[*].Instances[?State.Name=='running'].InstanceId" \
+    --output text)
+  if [ $router_instance_id == "None" ] ; then
+    echo "ERROR: Router instance has to be started first" 1>&2
+    exit 1
+  fi
+  echo "Router instance ID: ${router_instance_id}"
 else
   echo "Creating router instance"
   private_ip="10.0.1.11"
@@ -85,6 +97,26 @@ if [ $is_client -eq 0 ]; then
     --query "Reservations[0].Instances[0].PublicIpAddress" --output text)
   echo Public IP: $public_ip
 
+  echo "Configuring the instance"
+  scp -o StrictHostKeyChecking=no -i ~/.ssh/aws-test-key-pair.pem ${script_path}/config_router.sh ubuntu@${public_ip}:
+  ssh -i ~/.ssh/aws-test-key-pair.pem ubuntu@${public_ip} sudo /home/ubuntu/config_router.sh
+
   printf "\n\nConnect to the instance with the following command:\n"
   echo "ssh -i ~/.ssh/aws-test-key-pair.pem ubuntu@${public_ip}"
+else
+  echo "Getting private route table ID"
+  private_route_table_id=$(aws ec2 describe-route-tables \
+    --filters Name=tag:Name,Values=ddclient-test-private \
+    --query "RouteTables[0].RouteTableId" --output text)
+  echo "Adding 0.0.0.0/0 route to ${private_route_table_id} via ${router_instance_id}"
+  aws ec2 create-route --route-table-id ${private_route_table_id} \
+    --destination-cidr-block 0.0.0.0/0 --instance-id ${router_instance_id} > /dev/null
+
+  echo "Getting router public IP"
+  public_ip=$(aws ec2 describe-instances --instance-id $router_instance_id \
+    --query "Reservations[0].Instances[0].PublicIpAddress" --output text)
+  echo Router IP: $public_ip
+
+  printf "\n\nConnect to the instance with the following command:\n"
+  echo "ssh -p 2022 -i ~/.ssh/aws-test-key-pair.pem ubuntu@${public_ip}"
 fi

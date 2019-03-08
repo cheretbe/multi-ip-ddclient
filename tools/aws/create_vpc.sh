@@ -76,6 +76,10 @@ echo "Allow SSH access from anywhere"
 aws ec2 authorize-security-group-ingress --group-id $public_security_group_id \
   --protocol tcp --port 22 --cidr 0.0.0.0/0
 
+echo "Allow access on port 2022 from anywhere"
+aws ec2 authorize-security-group-ingress --group-id $public_security_group_id \
+  --protocol tcp --port 2022 --cidr 0.0.0.0/0
+
 echo "Allow full access from the private network"
 aws ec2 authorize-security-group-ingress --group-id $public_security_group_id \
   --protocol all --cidr 10.0.0.0/24
@@ -98,9 +102,9 @@ private_security_group_id=$(aws ec2 create-security-group --group-name ddclient-
   --vpc-id $vpc_id --query "GroupId" --output text)
 echo Security group ID: $private_security_group_id
 
-echo "Allow SSH access from the public subnet"
+echo "Allow SSH access from anywhere"
 aws ec2 authorize-security-group-ingress --group-id $private_security_group_id \
-  --protocol tcp --port 22 --cidr 10.0.1.0/24
+  --protocol tcp --port 22 --cidr 0.0.0.0/0
 
 echo "Allow ICMP from the public network"
 aws ec2 authorize-security-group-ingress --group-id $private_security_group_id \

@@ -1,3 +1,6 @@
+Old proof-of-concept code, that uses AWS CLI. Replaced with Python script in
+parent directory.
+
 ```shell
 vagrant ssh-config > /tmp/vagrant-ssh-config
 scp -F /tmp/vagrant-ssh-config ~/keys/aws-test-key-pair.pem default:.ssh/aws-test-key-pair.pem

@@ -1,4 +1,4 @@
-Old proof-of-concept code, that uses AWS CLI. Replaced with Python script in
+Old proof-of-concept code, that uses AWS CLI. Replaced with Python scripts in
 parent directory.
 
 ```shell

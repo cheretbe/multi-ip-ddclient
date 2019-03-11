@@ -13,9 +13,11 @@ if aws_common.aws_vpc_by_name(ec2, "ddclient-test", must_exist=False):
 
 print("Creating the VPC")
 vpc = ec2.create_vpc(CidrBlock="10.0.0.0/16")
+vpc.wait_until_exists()
 print("VPC ID: {}".format(vpc.id))
 print("Setting VPC name to 'ddclient-test'")
 vpc.create_tags(Tags=[{ "Key":"Name", "Value":"ddclient-test"}])
+vpc.wait_until_available()
 
 print("Creating public subnet 10.0.1.0/24")
 public_subnet = ec2.create_subnet(CidrBlock="10.0.1.0/24", VpcId=vpc.id)
@@ -56,3 +58,45 @@ public_route_table.create_route(DestinationCidrBlock="0.0.0.0/0",
 
 print("Associating the public subnet with the public route table")
 public_route_table.associate_with_subnet(SubnetId=public_subnet.id)
+
+print("Creating a custom route table")
+private_route_table = ec2.create_route_table(VpcId=vpc.id)
+print("Route table ID: {}".format(private_route_table.id))
+print("Setting route table name to 'ddclient-test-private'")
+private_route_table.create_tags(Tags=[{ "Key":"Name", "Value":"ddclient-test-private"}])
+
+print("Associating the private subnet with the private route table")
+private_route_table.associate_with_subnet(SubnetId=private_subnet.id)
+
+# echo "Creating a security group for public subnet in the VPC"
+# public_security_group_id=$(aws ec2 create-security-group \
+#   --group-name ddclient-test-public \
+#   --description "Security group for SSH access" \
+#   --vpc-id $vpc_id --query "GroupId" --output text)
+# echo Security group ID: $public_security_group_id
+print("Creating a security group for public subnet in the VPC")
+public_security_group = ec2.create_security_group(
+    Description="Security group for public subnet",
+    GroupName="ddclient-test-public",
+    VpcId=vpc.id
+)
+print("Security group ID: {}".format(public_security_group.id))
+
+print("Allow SSH access from anywhere")
+public_security_group.authorize_ingress(
+    IpPermissions=[{
+        "FromPort": 22, "ToPort": 22, "IpProtocol": "TCP",
+        "IpRanges": [{
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allow SSH from anywhere"
+        }]
+    }]
+)
+
+# echo "Allow access on port 2022 from anywhere"
+# aws ec2 authorize-security-group-ingress --group-id $public_security_group_id \
+#   --protocol tcp --port 2022 --cidr 0.0.0.0/0
+
+# echo "Allow full access from the private network"
+# aws ec2 authorize-security-group-ingress --group-id $public_security_group_id \
+#   --protocol all --cidr 10.0.0.0/24

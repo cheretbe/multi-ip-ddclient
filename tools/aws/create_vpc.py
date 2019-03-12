@@ -68,12 +68,6 @@ private_route_table.create_tags(Tags=[{ "Key":"Name", "Value":"ddclient-test-pri
 print("Associating the private subnet with the private route table")
 private_route_table.associate_with_subnet(SubnetId=private_subnet.id)
 
-# echo "Creating a security group for public subnet in the VPC"
-# public_security_group_id=$(aws ec2 create-security-group \
-#   --group-name ddclient-test-public \
-#   --description "Security group for SSH access" \
-#   --vpc-id $vpc_id --query "GroupId" --output text)
-# echo Security group ID: $public_security_group_id
 print("Creating a security group for public subnet in the VPC")
 public_security_group = ec2.create_security_group(
     Description="Security group for public subnet",
@@ -82,21 +76,75 @@ public_security_group = ec2.create_security_group(
 )
 print("Security group ID: {}".format(public_security_group.id))
 
-print("Allow SSH access from anywhere")
+print("Adding access rules for the public network")
 public_security_group.authorize_ingress(
-    IpPermissions=[{
-        "FromPort": 22, "ToPort": 22, "IpProtocol": "TCP",
-        "IpRanges": [{
-            "CidrIp": "0.0.0.0/0",
-            "Description": "Allow SSH from anywhere"
-        }]
-    }]
+    IpPermissions=[
+        {
+            "FromPort": 22,
+            "ToPort": 22,
+            "IpProtocol": "TCP",
+            "IpRanges": [
+                {
+                    "CidrIp": "0.0.0.0/0",
+                    "Description": "Allow SSH from anywhere"
+                }
+            ]
+        },
+        {
+            "FromPort": 2022,
+            "ToPort": 2022,
+            "IpProtocol": "TCP",
+            "IpRanges": [
+                {
+                    "CidrIp": "0.0.0.0/0",
+                    "Description": "Allow SSH on custom port from anywhere"
+                }
+            ]
+        },
+        {
+            "IpProtocol": "-1",
+            "IpRanges": [
+                {
+                    "CidrIp": "10.0.0.0/24",
+                    "Description": "Allow full access from the private network"
+                }
+            ]
+        }
+    ]
 )
 
-# echo "Allow access on port 2022 from anywhere"
-# aws ec2 authorize-security-group-ingress --group-id $public_security_group_id \
-#   --protocol tcp --port 2022 --cidr 0.0.0.0/0
+print("Creating a security group for private subnet in the VPC")
+private_security_group = ec2.create_security_group(
+    Description="Security group for private subnet",
+    GroupName="ddclient-test-private",
+    VpcId=vpc.id
+)
+print("Security group ID: {}".format(public_security_group.id))
 
-# echo "Allow full access from the private network"
-# aws ec2 authorize-security-group-ingress --group-id $public_security_group_id \
-#   --protocol all --cidr 10.0.0.0/24
+print("Adding access rules for the private network")
+private_security_group.authorize_ingress(
+    IpPermissions=[
+        {
+            "FromPort": 22,
+            "ToPort": 22,
+            "IpProtocol": "TCP",
+            "IpRanges": [
+                {
+                    "CidrIp": "0.0.0.0/0",
+                    "Description": "Allow SSH from anywhere"
+                }
+            ]
+        },
+        {
+            "FromPort": -1,
+            "ToPort": -1,
+            "IpProtocol": "ICMP",
+            "IpRanges": [
+                {
+                    "CidrIp": "10.0.1.0/24",
+                    "Description": "Allow ICMP from the public network"
+                }
+            ]
+        }
+    ]
+)

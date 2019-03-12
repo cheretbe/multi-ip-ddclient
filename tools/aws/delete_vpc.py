@@ -10,6 +10,13 @@ print("Getting VPC ID")
 vpc = aws_common.aws_vpc_by_name(ec2, "ddclient-test")
 print("VPC ID: " + vpc.id)
 
+print("Reading security groups")
+security_group_filter = [{"Name": "group-name",
+    "Values": ["ddclient-test-public", "ddclient-test-private"]}]
+for security_group in ec2.security_groups.filter(Filters=security_group_filter):
+    print("Deleting security group '{}'".format(security_group.id))
+    security_group.delete()
+
 print("Reading subnets")
 subnet_filter = [{"Name": "vpc-id", "Values": [vpc.id]}]
 for subnet in ec2.subnets.filter(Filters=subnet_filter):

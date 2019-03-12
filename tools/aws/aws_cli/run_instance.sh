@@ -37,7 +37,7 @@ if [ $is_client -eq 1 ]; then
     --filters Name=tag:Name,Values=ddclient-test-router \
     --query "Reservations[*].Instances[?State.Name=='running'].InstanceId" \
     --output text)
-  if [ $router_instance_id == "None" ] ; then
+  if [ "${router_instance_id}" == "" ] ; then
     echo "ERROR: Router instance has to be started first" 1>&2
     exit 1
   fi
@@ -96,6 +96,23 @@ if [ $is_client -eq 0 ]; then
   public_ip=$(aws ec2 describe-instances --instance-id $instance_id \
     --query "Reservations[0].Instances[0].PublicIpAddress" --output text)
   echo Public IP: $public_ip
+
+  set +e
+  echo "Waiting for SSH to become avialable..."
+  attempt=1
+  maxConnectionAttempts=5
+  sleepSeconds=5
+  while (( $attempt <= $maxConnectionAttempts ))
+  do
+    ssh -o StrictHostKeyChecking=no -i ~/.ssh/aws-test-key-pair.pem ubuntu@${public_ip} 'ls ~ >/dev/null'
+    case $? in
+      (0) echo "SSH is available"; break ;;
+      (*) echo "Attempt ${attempt} of ${maxConnectionAttempts}: SSH is not available, waiting ${sleepSeconds} seconds..." ;;
+    esac
+    sleep $sleepSeconds
+    ((attempt+=1))
+  done
+  set -e
 
   echo "Configuring the instance"
   scp -o StrictHostKeyChecking=no -i ~/.ssh/aws-test-key-pair.pem ${script_path}/config_router.sh ubuntu@${public_ip}:

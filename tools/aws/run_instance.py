@@ -1,8 +1,13 @@
 #!/usr/bin/env python3
 
+import os
 import argparse
+import time
+import subprocess
 import boto3
 import aws_common
+
+script_dir = os.path.dirname(os.path.realpath(__file__))
 
 parser = argparse.ArgumentParser(description="AWS instance creation helper")
 
@@ -76,7 +81,7 @@ subnet_id = list(ec2.subnets.filter(Filters=subnet_filter))[0].id
 print("Subnet ID: " + subnet_id)
 
 print("\nRunning instance")
-instance = ec2.create_instances(
+instance = list(ec2.create_instances(
     ImageId=image_id,
     InstanceType="t2.nano",
     KeyName="test-key-pair",
@@ -89,8 +94,7 @@ instance = ec2.create_instances(
     }],
     MinCount=1,
     MaxCount=1
-)
-# instance = ec2.Instance("i-0964d17619ce858a9")
+))[0]
 
 instance.wait_until_exists()
 print("Instance ID: " + instance.id)
@@ -99,5 +103,51 @@ if not options.is_client:
     print("Disabling source/destination checking")
     instance.modify_attribute(Attribute="sourceDestCheck", Value="False")
 
-print("Waiting for instance to start")
+print("Waiting for instance to start...")
 instance.wait_until_running()
+
+if not options.is_client:
+    print("Instance's public IP: " + instance.public_ip_address)
+    print("Waiting for SSH to become avialable...")
+    retry_count = 5
+    sleep_time = 5
+    for i in range(retry_count):
+        if aws_common.port_is_open(instance.public_ip_address, 22):
+            print("Port 22 is open")
+            break
+        else:
+            print("[{}/{}] Port 22 is not available. Sleeping for {} seconds".format(
+                i + 1, retry_count, sleep_time)
+            )
+            time.sleep(sleep_time)
+    subprocess.check_call(("ssh", "-i", "~/.ssh/aws-test-key-pair.pem",
+        "-o", "StrictHostKeyChecking=no",
+        "ubuntu@" + instance.public_ip_address, "uname -a"
+    ))
+
+    print("Configuring the instance")
+    subprocess.check_call(("scp", "-o", "StrictHostKeyChecking=no",
+        "-i", "~/.ssh/aws-test-key-pair.pem",
+        os.path.join(script_dir, "config_router.sh"),
+        "ubuntu@" + instance.public_ip_address + ":"
+    ))
+    subprocess.check_call(("ssh", "-i", "~/.ssh/aws-test-key-pair.pem",
+        "-o", "StrictHostKeyChecking=no",
+        "ubuntu@" + instance.public_ip_address, "sudo /home/ubuntu/config_router.sh"
+    ))
+
+    print("\n\nConnect to the instance using the following command:")
+    print("ssh -i ~/.ssh/aws-test-key-pair.pem ubuntu@{}".format(instance.public_ip_address))
+else:
+    print("Getting private route table ID")
+    route_table_filter = [{"Name": "tag:Name", "Values": ["ddclient-test-private"]}]
+    route_table = list(ec2.route_tables.filter(Filters=route_table_filter))[0]
+    print("Private route table ID: " + route_table.id)
+    print("Adding route 0.0.0.0/0 via {} to {}".format(router_instance.id, route_table.id))
+    route_table.create_route(DestinationCidrBlock="0.0.0.0/0",
+        InstanceId=router_instance.id)
+
+    print("\n\nConnect to the instance using the following command:")
+    print("ssh -p 2022 -i ~/.ssh/aws-test-key-pair.pem ubuntu@{}".format(
+        router_instance.public_ip_address)
+    )

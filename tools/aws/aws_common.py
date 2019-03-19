@@ -1,4 +1,6 @@
 import sys
+import socket
+import contextlib
 
 class NoTracebackException(Exception):
     pass
@@ -17,6 +19,11 @@ def aws_vpc_by_name(ec2, vpc_name, must_exist=True):
     if not vpc and must_exist:
         raise NoTracebackException("VPC '{}' does not exist".format(vpc_name))
     return vpc
+
+def port_is_open(host, port):
+    with contextlib.closing(socket.socket(socket.AF_INET, socket.SOCK_STREAM)) as sock:
+        sock.settimeout(0.5)
+        return sock.connect_ex((host, port)) == 0
 
 _old_excepthook = sys.excepthook
 sys.excepthook = excepthook

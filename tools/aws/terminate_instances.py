@@ -30,6 +30,17 @@ for instance in instances:
         ec2_client.terminate_instances(InstanceIds=[instance["InstanceId"]])
         running_instance_ids += [instance["InstanceId"]]
 
+print("Checking routes in 'ddclient-test-private' route table")
+response = ec2_client.describe_route_tables(Filters= [{"Name": "tag:Name",
+    "Values": ["ddclient-test-private"]}])
+for route in response["RouteTables"][0]["Routes"]:
+    if route["DestinationCidrBlock"] == "0.0.0.0/0" and (route.get("InstanceId") in running_instance_ids):
+        print("Deleting route 0.0.0.0/0 via {}".format(route["InstanceId"]))
+        ec2_client.delete_route(
+            RouteTableId=response["RouteTables"][0]["RouteTableId"],
+            DestinationCidrBlock="0.0.0.0/0"
+        )
+
 if (not options.no_wait) and running_instance_ids:
     print("Waiting for instance(s) to terminate...")
     waiter = ec2_client.get_waiter("instance_terminated")

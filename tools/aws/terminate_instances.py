@@ -5,17 +5,22 @@ import boto3
 
 parser = argparse.ArgumentParser(description="AWS instance deletion helper")
 
+parser.add_argument("instance_name", nargs="*", default=None,
+    help="instance name to terminate")
+
 parser.add_argument("-n", "--nowait", dest="no_wait", action="store_true",
-    default=False, help="do not wait for action instance(s) termination")
+    default=False, help="do not wait for actual instance(s) termination")
 
 options = parser.parse_args()
 
 ec2_client = boto3.client("ec2")
 
+instance_filter = [{"Name": "tag:Group", "Values": ["ddclient-test"]}]
+if options.instance_name:
+    instance_filter += [{"Name": "tag:Name", "Values": options.instance_name}]
+
 print("Querying instances")
-response = ec2_client.describe_instances(
-    Filters=[{"Name": "tag:Name", "Values": ["ddclient-test-client", "ddclient-test-router"]}]
-)
+response = ec2_client.describe_instances(Filters=instance_filter)
 instances = [i["Instances"][0] for i in response["Reservations"]]
 
 running_instance_ids = []

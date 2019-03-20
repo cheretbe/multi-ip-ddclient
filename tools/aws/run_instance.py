@@ -90,7 +90,10 @@ instance = list(ec2.create_instances(
     PrivateIpAddress=options.private_ip,
     TagSpecifications=[{
         "ResourceType": "instance",
-        "Tags": [{"Key": "Name", "Value": options.instance_name}]
+        "Tags": [
+            {"Key": "Name", "Value": options.instance_name},
+            {"Key": "Group", "Value": "ddclient-test"}
+        ]
     }],
     MinCount=1,
     MaxCount=1

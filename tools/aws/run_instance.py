@@ -118,18 +118,9 @@ if not options.is_client:
         InstanceId=instance.id)
 
     print("Instance's public IP: " + instance.public_ip_address)
-    print("Waiting for SSH to become avialable...")
-    retry_count = 5
-    sleep_time = 5
-    for i in range(retry_count):
-        if aws_common.port_is_open(instance.public_ip_address, 22):
-            print("Port 22 is open")
-            break
-        else:
-            print("[{}/{}] Port 22 is not available. Sleeping for {} seconds".format(
-                i + 1, retry_count, sleep_time)
-            )
-            time.sleep(sleep_time)
+
+    aws_common.wait_for_ssh_port(ip=instance.public_ip_address)
+
     subprocess.check_call(("ssh", "-i", "~/.ssh/aws-test-key-pair.pem",
         "-o", "StrictHostKeyChecking=no",
         "ubuntu@" + instance.public_ip_address, "uname -a"
@@ -149,6 +140,13 @@ if not options.is_client:
     print("\n\nConnect to the instance using the following command:")
     print("ssh -i ~/.ssh/aws-test-key-pair.pem ubuntu@{}".format(instance.public_ip_address))
 else:
+    aws_common.wait_for_ssh_port(ip=router_instance.public_ip_address, port=2022)
+
+    subprocess.check_call(("ssh", "-p", "2022", "-i", "~/.ssh/aws-test-key-pair.pem",
+        "-o", "StrictHostKeyChecking=no",
+        "ubuntu@" + router_instance.public_ip_address, "uname -a"
+    ))
+
     print("\n\nConnect to the instance using the following command:")
     print("ssh -p 2022 -i ~/.ssh/aws-test-key-pair.pem ubuntu@{}".format(
         router_instance.public_ip_address)

@@ -102,14 +102,21 @@ instance = list(ec2.create_instances(
 instance.wait_until_exists()
 print("Instance ID: " + instance.id)
 
-if not options.is_client:
-    print("Disabling source/destination checking")
-    instance.modify_attribute(Attribute="sourceDestCheck", Value="False")
-
 print("Waiting for instance to start...")
 instance.wait_until_running()
 
 if not options.is_client:
+    print("Disabling source/destination checking")
+    instance.modify_attribute(Attribute="sourceDestCheck", Value="False")
+
+    print("Getting private route table ID")
+    route_table_filter = [{"Name": "tag:Name", "Values": ["ddclient-test-private"]}]
+    route_table = list(ec2.route_tables.filter(Filters=route_table_filter))[0]
+    print("Private route table ID: " + route_table.id)
+    print("Adding route 0.0.0.0/0 via {} to {}".format(instance.id, route_table.id))
+    route_table.create_route(DestinationCidrBlock="0.0.0.0/0",
+        InstanceId=instance.id)
+
     print("Instance's public IP: " + instance.public_ip_address)
     print("Waiting for SSH to become avialable...")
     retry_count = 5
@@ -142,14 +149,6 @@ if not options.is_client:
     print("\n\nConnect to the instance using the following command:")
     print("ssh -i ~/.ssh/aws-test-key-pair.pem ubuntu@{}".format(instance.public_ip_address))
 else:
-    print("Getting private route table ID")
-    route_table_filter = [{"Name": "tag:Name", "Values": ["ddclient-test-private"]}]
-    route_table = list(ec2.route_tables.filter(Filters=route_table_filter))[0]
-    print("Private route table ID: " + route_table.id)
-    print("Adding route 0.0.0.0/0 via {} to {}".format(router_instance.id, route_table.id))
-    route_table.create_route(DestinationCidrBlock="0.0.0.0/0",
-        InstanceId=router_instance.id)
-
     print("\n\nConnect to the instance using the following command:")
     print("ssh -p 2022 -i ~/.ssh/aws-test-key-pair.pem ubuntu@{}".format(
         router_instance.public_ip_address)

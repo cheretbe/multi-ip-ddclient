@@ -148,3 +148,13 @@ private_security_group.authorize_ingress(
         }
     ]
 )
+
+print("Creating network interface 'ddclient-test-1' with IP 10.0.1.22")
+ec2.create_network_interface(Description="ddclient-test-1",
+    PrivateIpAddress="10.0.1.22", SubnetId=public_subnet.id,
+    Groups=[public_security_group.id])
+
+print("Creating network interface 'ddclient-test-2' with IP 10.0.1.33")
+ec2.create_network_interface(Description="ddclient-test-2",
+    PrivateIpAddress="10.0.1.33", SubnetId=public_subnet.id,
+    Groups=[public_security_group.id])

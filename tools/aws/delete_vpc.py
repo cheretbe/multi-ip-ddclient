@@ -10,6 +10,13 @@ print("Getting VPC ID")
 vpc = aws_common.aws_vpc_by_name(ec2, "ddclient-test")
 print("VPC ID: " + vpc.id)
 
+print("Reading network interfaces")
+network_interface_filter = [{"Name": "description",
+    "Values": ["ddclient-test-1", "ddclient-test-2"]}]
+for interface in ec2.network_interfaces.filter(Filters=network_interface_filter):
+    print("Deleting network interface '{}'".format(interface.id))
+    interface.delete()
+
 print("Reading security groups")
 security_group_filter = [{"Name": "group-name",
     "Values": ["ddclient-test-public", "ddclient-test-private"]}]

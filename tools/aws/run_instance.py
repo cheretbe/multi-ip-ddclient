@@ -26,6 +26,10 @@ parser.add_argument("-d", "--linux-distribution", default="ubuntu-xenial",
 
 options = parser.parse_args()
 
+if not options.is_client and (options.linux_distribution != "ubuntu-xenial"):
+    raise aws_common.NoTracebackException("Only 'ubuntu-xenial' distribution "
+        "is supported for router instances")
+
 ec2 = boto3.resource("ec2")
 
 ami_names_map = {
@@ -127,11 +131,18 @@ if not options.is_client:
     ))
 
     print("Configuring the instance")
+    # Uploading 'config_router.sh'
     subprocess.check_call(("scp", "-o", "StrictHostKeyChecking=no",
         "-i", "~/.ssh/aws-test-key-pair.pem",
         os.path.join(script_dir, "config_router.sh"),
         "ubuntu@" + instance.public_ip_address + ":"
     ))
+    # Uploading 'wait_for_eth1_ip.sh'
+    subprocess.check_call(("scp", "-i", "~/.ssh/aws-test-key-pair.pem",
+        os.path.join(script_dir, "wait_for_eth1_ip.sh"),
+        "ubuntu@" + instance.public_ip_address + ":"
+    ))
+    # Running 'config_router.sh'
     subprocess.check_call(("ssh", "-i", "~/.ssh/aws-test-key-pair.pem",
         "-o", "StrictHostKeyChecking=no",
         "ubuntu@" + instance.public_ip_address, "sudo /home/ubuntu/config_router.sh"

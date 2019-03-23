@@ -19,3 +19,8 @@ iptables --table nat --append POSTROUTING -s 10.0.0.0/24 \
 iptables --table nat --append PREROUTING --in-interface eth0 \
   --protocol tcp --dport 2022 -j DNAT --to 10.0.0.100:22
 
+echo "Adding settings for 'eth1' interface"
+cat >/etc/network/interfaces.d/eth1.cfg <<EOL
+auto eth1
+iface eth1 inet dhcp
+EOL

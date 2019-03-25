@@ -20,14 +20,14 @@
         <y:ProxyAutoBoundsNode>
           <y:Realizers active="0">
             <y:GroupNode>
-              <y:Geometry height="818.892359945296" width="678.3668941413518" x="-794.266281505664" y="-747.7577715110177"/>
+              <y:Geometry height="603.189234945296" width="554.456191379737" x="-993.7138345104074" y="-806.7577715110177"/>
               <y:Fill hasColor="false" transparent="false"/>
               <y:BorderStyle color="#232F3E" type="line" width="2.0"/>
-              <y:NodeLabel alignment="left" autoSizePolicy="node_width" borderDistance="0.0" fontFamily="Dialog" fontSize="17" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="44.0" horizontalTextPosition="right" iconData="1" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#232F3E" verticalTextPosition="center" visible="true" width="678.3668941413518" x="0.0" xml:space="preserve" y="0.0">   AWS  Cloud</y:NodeLabel>
+              <y:NodeLabel alignment="left" autoSizePolicy="node_width" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="39.0" horizontalTextPosition="right" iconData="1" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#232F3E" verticalTextPosition="center" visible="true" width="554.456191379737" x="0.0" xml:space="preserve" y="0.0">   AWS  Cloud</y:NodeLabel>
               <y:Shape type="rectangle"/>
               <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
-              <y:Insets bottom="40" bottomF="40.0" left="20" leftF="20.0" right="20" rightF="20.0" top="25" topF="25.0"/>
-              <y:BorderInsets bottom="0" bottomF="0.0" left="0" leftF="0.0" right="8" rightF="8.0" top="0" topF="0.0"/>
+              <y:Insets bottom="10" bottomF="10.0" left="10" leftF="10.0" right="10" rightF="10.0" top="5" topF="5.0"/>
+              <y:BorderInsets bottom="0" bottomF="0.0" left="0" leftF="0.0" right="0" rightF="0.0" top="0" topF="0.0"/>
             </y:GroupNode>
             <y:GroupNode>
               <y:Geometry height="50.0" width="50.0" x="300.5" y="271.5"/>
@@ -50,15 +50,15 @@
             <y:ProxyAutoBoundsNode>
               <y:Realizers active="0">
                 <y:GroupNode>
-                  <y:Geometry height="709.892359945296" width="487.2389577963918" x="-774.266281505664" y="-678.7577715110177"/>
+                  <y:Geometry height="549.189234945296" width="425.109511692237" x="-983.7138345104074" y="-762.7577715110177"/>
                   <y:Fill hasColor="false" transparent="false"/>
                   <y:BorderStyle color="#2F8A3A" type="line" width="2.0"/>
-                  <y:NodeLabel alignment="left" autoSizePolicy="node_width" borderDistance="0.0" fontFamily="Dialog" fontSize="17" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="44.0" horizontalTextPosition="right" iconData="2" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#2F8A3A" verticalTextPosition="center" visible="true" width="487.2389577963918" x="0.0" xml:space="preserve" y="0.0">   VPC "ddclient-test"</y:NodeLabel>
-                  <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="17" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="22.9921875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="b" textColor="#2F8A3A" verticalTextPosition="bottom" visible="true" width="89.07470703125" x="199.0821253825709" xml:space="preserve" y="682.900172445296">10.0.0.0/16</y:NodeLabel>
+                  <y:NodeLabel alignment="left" autoSizePolicy="node_width" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="39.0" horizontalTextPosition="right" iconData="2" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#2F8A3A" verticalTextPosition="center" visible="true" width="425.109511692237" x="0.0" xml:space="preserve" y="0.0">   VPC "ddclient-test"</y:NodeLabel>
+                  <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="15" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="20.7578125" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="b" textColor="#2F8A3A" verticalTextPosition="bottom" visible="true" width="79.06591796875" x="173.0217968617435" xml:space="preserve" y="524.431422445296">10.0.0.0/16</y:NodeLabel>
                   <y:Shape type="rectangle"/>
                   <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
-                  <y:Insets bottom="40" bottomF="40.0" left="20" leftF="20.0" right="20" rightF="20.0" top="25" topF="25.0"/>
-                  <y:BorderInsets bottom="0" bottomF="0.0" left="0" leftF="0.0" right="1" rightF="1.0048828124998863" top="0" topF="0.0"/>
+                  <y:Insets bottom="35" bottomF="35.0" left="10" leftF="10.0" right="10" rightF="10.0" top="5" topF="5.0"/>
+                  <y:BorderInsets bottom="0" bottomF="0.0" left="0" leftF="0.0" right="0" rightF="0.0" top="0" topF="0.0"/>
                 </y:GroupNode>
                 <y:GroupNode>
                   <y:Geometry height="50.0" width="50.0" x="300.5" y="271.5"/>
@@ -81,15 +81,15 @@
                 <y:ProxyAutoBoundsNode>
                   <y:Realizers active="0">
                     <y:GroupNode>
-                      <y:Geometry height="315.57473489305204" width="446.2340749838919" x="-754.266281505664" y="-609.7577715110177"/>
+                      <y:Geometry height="262.0747348930521" width="404.693496067237" x="-973.2978188854074" y="-718.7577715110177"/>
                       <y:Fill hasColor="false" transparent="false"/>
                       <y:BorderStyle color="#2F8A3A" type="line" width="2.0"/>
-                      <y:NodeLabel alignment="left" autoSizePolicy="node_width" borderDistance="0.0" fontFamily="Dialog" fontSize="17" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="47.0" horizontalTextPosition="right" iconData="3" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#2F8A3A" verticalTextPosition="center" visible="true" width="446.2340749838919" x="0.0" xml:space="preserve" y="0.0">   Subnet "ddclient-test-public"</y:NodeLabel>
-                      <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="17" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="22.9921875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="b" textColor="#2F8A3A" verticalTextPosition="bottom" visible="true" width="89.07470703125" x="178.5796839763209" xml:space="preserve" y="288.58254739305204">10.0.1.0/24</y:NodeLabel>
+                      <y:NodeLabel alignment="left" autoSizePolicy="node_width" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="39.0" horizontalTextPosition="right" iconData="3" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#2F8A3A" verticalTextPosition="center" visible="true" width="404.693496067237" x="0.0" xml:space="preserve" y="0.0">   Subnet "ddclient-test-public"</y:NodeLabel>
+                      <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="15" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="20.7578125" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="b" textColor="#2F8A3A" verticalTextPosition="bottom" visible="true" width="79.06591796875" x="162.8137890492435" xml:space="preserve" y="237.3169223930521">10.0.1.0/24</y:NodeLabel>
                       <y:Shape type="rectangle"/>
                       <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
-                      <y:Insets bottom="40" bottomF="40.0" left="20" leftF="20.0" right="20" rightF="20.0" top="25" topF="25.0"/>
-                      <y:BorderInsets bottom="0" bottomF="0.0" left="0" leftF="0.0" right="13" rightF="12.790090635404908" top="1" topF="0.8755107184917961"/>
+                      <y:Insets bottom="30" bottomF="30.0" left="5" leftF="5.0" right="20" rightF="20.0" top="0" topF="0.0"/>
+                      <y:BorderInsets bottom="0" bottomF="0.0" left="0" leftF="0.0" right="0" rightF="0.0" top="1" topF="0.8755107184917961"/>
                     </y:GroupNode>
                     <y:GroupNode>
                       <y:Geometry height="50.0" width="50.0" x="-416.3061534450971" y="-465.9760107925259"/>
@@ -109,10 +109,10 @@
                 <node id="n0::n0::n0::n0">
                   <data key="d6">
                     <y:SVGNode>
-                      <y:Geometry height="80.0" width="80.0" x="-703.513840099414" y="-514.9760107925259"/>
+                      <y:Geometry height="60.0" width="60.0" x="-941.2958657604074" y="-646.9760107925259"/>
                       <y:Fill color="#CCCCFF" transparent="false"/>
                       <y:BorderStyle color="#000000" type="line" width="1.0"/>
-                      <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="15" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="20.7578125" horizontalTextPosition="center" iconTextGap="4" modelName="sandwich" modelPosition="s" textColor="#232F3E" verticalTextPosition="bottom" visible="true" width="141.5048828125" x="-30.75244140625" xml:space="preserve" y="84.0">ddclient-test-router</y:NodeLabel>
+                      <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="17.40625" horizontalTextPosition="center" iconTextGap="4" modelName="sandwich" modelPosition="s" textColor="#232F3E" verticalTextPosition="bottom" visible="true" width="114.00390625" x="-27.001953125" xml:space="preserve" y="64.0">ddclient-test-router</y:NodeLabel>
                       <y:SVGNodeProperties usingVisualBounds="true"/>
                       <y:SVGModel svgBoundsPolicy="0">
                         <y:SVGContent refid="4"/>
@@ -123,10 +123,10 @@
                 <node id="n0::n0::n0::n1">
                   <data key="d6">
                     <y:SVGNode>
-                      <y:Geometry height="40.0" width="40.0" x="-507.64435949149504" y="-494.9760107925259"/>
+                      <y:Geometry height="35.0" width="35.0" x="-752.9263851524885" y="-634.4760107925259"/>
                       <y:Fill color="#CCCCFF" transparent="false"/>
                       <y:BorderStyle color="#000000" type="line" width="1.0"/>
-                      <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="30.8125" horizontalTextPosition="center" iconTextGap="4" modelName="sandwich" modelPosition="s" textColor="#232F3E" verticalTextPosition="bottom" visible="true" width="89.3828125" x="-24.69140625" xml:space="preserve" y="44.0">eth0 - 10.0.1.11
+                      <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="30.8125" horizontalTextPosition="center" iconTextGap="4" modelName="sandwich" modelPosition="s" textColor="#232F3E" verticalTextPosition="bottom" visible="true" width="88.064453125" x="-26.5322265625" xml:space="preserve" y="39.0">eth0 - 10.0.1.11
 34.239.74.191</y:NodeLabel>
                       <y:SVGNodeProperties usingVisualBounds="true"/>
                       <y:SVGModel svgBoundsPolicy="0">
@@ -138,10 +138,10 @@
                 <node id="n0::n0::n0::n2">
                   <data key="d6">
                     <y:SVGNode>
-                      <y:Geometry height="40.0" width="40.0" x="-507.64435949149504" y="-408.9955366179657"/>
+                      <y:Geometry height="35.0" width="35.0" x="-752.9263851524885" y="-556.4955366179656"/>
                       <y:Fill color="#CCCCFF" transparent="false"/>
                       <y:BorderStyle color="#000000" type="line" width="1.0"/>
-                      <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="30.8125" horizontalTextPosition="center" iconTextGap="4" modelName="sandwich" modelPosition="s" textColor="#232F3E" verticalTextPosition="bottom" visible="true" width="89.3828125" x="-24.69140625" xml:space="preserve" y="44.0">eth1 - 10.0.1.22
+                      <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="30.8125" horizontalTextPosition="center" iconTextGap="4" modelName="sandwich" modelPosition="s" textColor="#232F3E" verticalTextPosition="bottom" visible="true" width="88.064453125" x="-26.5322265625" xml:space="preserve" y="39.0">eth1 - 10.0.1.22
 or 10.0.1.33</y:NodeLabel>
                       <y:SVGNodeProperties usingVisualBounds="true"/>
                       <y:SVGModel svgBoundsPolicy="0">
@@ -151,23 +151,21 @@ or 10.0.1.33</y:NodeLabel>
                   </data>
                 </node>
                 <node id="n0::n0::n0::n3">
-                  <data key="d5"/>
                   <data key="d6">
                     <y:ShapeNode>
-                      <y:Geometry height="30.0" width="153.82206233431805" x="-608.0602751808772" y="-536.4760107925259"/>
+                      <y:Geometry height="30.0" width="153.82206233431805" x="-855.8423008418706" y="-678.4760107925259"/>
                       <y:Fill hasColor="false" transparent="false"/>
                       <y:BorderStyle hasColor="false" raised="false" type="line" width="1.0"/>
-                      <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="30.8125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#D50000" verticalTextPosition="bottom" visible="true" width="148.09375" x="2.8641561671590807" xml:space="preserve" y="-0.40625">DNAT 34.239.74.191:2022
+                      <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="30.8125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#D50000" verticalTextPosition="bottom" visible="true" width="146.76953125" x="3.5262655421590807" xml:space="preserve" y="-0.40625">DNAT 34.239.74.191:2022
 to 10.0.0.100:22<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
                       <y:Shape type="rectangle"/>
                     </y:ShapeNode>
                   </data>
                 </node>
                 <node id="n0::n0::n0::n4">
-                  <data key="d5"/>
                   <data key="d6">
                     <y:ShapeNode>
-                      <y:Geometry height="5.0" width="5.0" x="-591.4664218258131" y="-477.4760107925259"/>
+                      <y:Geometry height="5.0" width="5.0" x="-839.2484474868065" y="-619.4760107925259"/>
                       <y:Fill color="#D50000" transparent="false"/>
                       <y:BorderStyle color="#D50000" raised="false" type="line" width="1.0"/>
                       <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#D50000" verticalTextPosition="bottom" visible="true" width="4.0" x="0.5" y="0.5">
@@ -183,10 +181,9 @@ to 10.0.0.100:22<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelMo
                   </data>
                 </node>
                 <node id="n0::n0::n0::n5">
-                  <data key="d5"/>
                   <data key="d6">
                     <y:ShapeNode>
-                      <y:Geometry height="5.0" width="5.0" x="-437.64435949149504" y="-482.4760107925259"/>
+                      <y:Geometry height="5.0" width="5.0" x="-685.4263851524885" y="-624.4760107925259"/>
                       <y:Fill color="#304FFE" transparent="false"/>
                       <y:BorderStyle color="#304FFE" raised="false" type="line" width="1.0"/>
                       <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#304FFE" verticalTextPosition="bottom" visible="true" width="4.0" x="0.5" y="0.5">
@@ -202,13 +199,12 @@ to 10.0.0.100:22<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelMo
                   </data>
                 </node>
                 <node id="n0::n0::n0::n6">
-                  <data key="d5"/>
                   <data key="d6">
                     <y:ShapeNode>
-                      <y:Geometry height="13.0" width="96.82206233431805" x="-437.64435949149504" y="-525.4760107925259"/>
+                      <y:Geometry height="13.0" width="96.82206233431805" x="-685.4263851524885" y="-667.4760107925259"/>
                       <y:Fill hasColor="false" transparent="false"/>
                       <y:BorderStyle hasColor="false" raised="false" type="line" width="1.0"/>
-                      <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="17.40625" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#304FFE" verticalTextPosition="bottom" visible="true" width="90.009765625" x="3.4061483546590807" xml:space="preserve" y="-2.203125">SSH on port 22<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+                      <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.40625" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#304FFE" verticalTextPosition="bottom" visible="true" width="86.048828125" x="5.386617104658967" xml:space="preserve" y="-2.203125">SSH on port 22<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
                       <y:Shape type="rectangle"/>
                     </y:ShapeNode>
                   </data>
@@ -221,15 +217,15 @@ to 10.0.0.100:22<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelMo
                 <y:ProxyAutoBoundsNode>
                   <y:Realizers active="0">
                     <y:GroupNode>
-                      <y:Geometry height="270.34235338705895" width="446.2340749838919" x="-754.266281505664" y="-279.2077649527807"/>
+                      <y:Geometry height="194.63922838705895" width="405.109511692237" x="-973.7138345104074" y="-443.2077649527807"/>
                       <y:Fill hasColor="false" transparent="false"/>
                       <y:BorderStyle color="#397CC1" type="line" width="2.0"/>
-                      <y:NodeLabel alignment="right" autoSizePolicy="node_width" borderDistance="0.0" fontFamily="Dialog" fontSize="17" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="47.0" horizontalTextPosition="right" iconData="6" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#397CC1" verticalTextPosition="center" visible="true" width="446.2340749838919" x="0.0" xml:space="preserve" y="0.0">           Subnet "ddclient-test-private"</y:NodeLabel>
-                      <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="17" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="22.9921875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="b" textColor="#397CC1" verticalTextPosition="bottom" visible="true" width="89.07470703125" x="178.5796839763209" xml:space="preserve" y="243.35016588705895">10.0.0.0/24</y:NodeLabel>
+                      <y:NodeLabel alignment="right" autoSizePolicy="node_width" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="39.0" horizontalTextPosition="right" iconData="6" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#397CC1" verticalTextPosition="center" visible="true" width="405.109511692237" x="0.0" xml:space="preserve" y="0.0">         Subnet "ddclient-test-private"</y:NodeLabel>
+                      <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="15" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="20.7578125" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="b" textColor="#397CC1" verticalTextPosition="bottom" visible="true" width="79.06591796875" x="163.0217968617435" xml:space="preserve" y="169.88141588705895">10.0.0.0/24</y:NodeLabel>
                       <y:Shape type="rectangle"/>
                       <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
-                      <y:Insets bottom="40" bottomF="40.0" left="20" leftF="20.0" right="20" rightF="20.0" top="5" topF="5.0"/>
-                      <y:BorderInsets bottom="0" bottomF="0.0" left="2" leftF="2.080078125" right="172" rightF="171.50137165241478" top="0" topF="0.0"/>
+                      <y:Insets bottom="10" bottomF="10.0" left="5" leftF="5.0" right="20" rightF="20.0" top="0" topF="0.0"/>
+                      <y:BorderInsets bottom="0" bottomF="0.0" left="2" leftF="2.080078125" right="170" rightF="170.44259502265095" top="0" topF="0.0"/>
                     </y:GroupNode>
                     <y:GroupNode>
                       <y:Geometry height="50.0" width="50.0" x="300.5" y="271.5"/>
@@ -249,10 +245,10 @@ to 10.0.0.100:22<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelMo
                 <node id="n0::n0::n1::n0">
                   <data key="d6">
                     <y:SVGNode>
-                      <y:Geometry height="80.0" width="80.0" x="-703.513840099414" y="-170.38103656572173"/>
+                      <y:Geometry height="60.0" width="60.0" x="-941.2958657604074" y="-353.38103656572173"/>
                       <y:Fill color="#CCCCFF" transparent="false"/>
                       <y:BorderStyle color="#000000" type="line" width="1.0"/>
-                      <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="15" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="37.515625" horizontalTextPosition="center" iconTextGap="4" modelName="sandwich" modelPosition="s" textColor="#232F3E" verticalTextPosition="bottom" visible="true" width="137.3447265625" x="-28.67236328125" xml:space="preserve" y="84.0">ddclient-test-client
+                      <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="30.8125" horizontalTextPosition="center" iconTextGap="4" modelName="sandwich" modelPosition="s" textColor="#232F3E" verticalTextPosition="bottom" visible="true" width="110.67578125" x="-25.337890625" xml:space="preserve" y="64.0">ddclient-test-client
 10.0.0.100</y:NodeLabel>
                       <y:SVGNodeProperties usingVisualBounds="true"/>
                       <y:SVGModel svgBoundsPolicy="0">
@@ -262,10 +258,9 @@ to 10.0.0.100:22<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelMo
                   </data>
                 </node>
                 <node id="n0::n0::n1::n1">
-                  <data key="d5"/>
                   <data key="d6">
                     <y:ShapeNode>
-                      <y:Geometry height="5.0" width="5.0" x="-666.013840099414" y="-198.0971339675981"/>
+                      <y:Geometry height="5.0" width="5.0" x="-913.7958657604074" y="-369.0971339675981"/>
                       <y:Fill color="#D50000" transparent="false"/>
                       <y:BorderStyle color="#D50000" raised="false" type="line" width="1.0"/>
                       <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#D50000" verticalTextPosition="bottom" visible="true" width="4.0" x="0.5" y="0.5">
@@ -281,13 +276,12 @@ to 10.0.0.100:22<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelMo
                   </data>
                 </node>
                 <node id="n0::n0::n1::n2">
-                  <data key="d5"/>
                   <data key="d6">
                     <y:ShapeNode>
-                      <y:Geometry height="30.0" width="96.79538300104929" x="-596.3289611752361" y="-227.20776495278068"/>
+                      <y:Geometry height="30.0" width="96.79538300104929" x="-855.8423008418706" y="-404.2077649527807"/>
                       <y:Fill hasColor="false" transparent="false"/>
                       <y:BorderStyle hasColor="false" raised="false" type="line" width="1.0"/>
-                      <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="17.40625" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#D50000" verticalTextPosition="bottom" visible="true" width="90.009765625" x="3.3928086880246155" xml:space="preserve" y="6.296875">SSH on port 22<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+                      <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.40625" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#D50000" verticalTextPosition="bottom" visible="true" width="86.048828125" x="5.3732774380246155" xml:space="preserve" y="6.296875">SSH on port 22<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
                       <y:Shape type="rectangle"/>
                     </y:ShapeNode>
                   </data>
@@ -299,10 +293,10 @@ to 10.0.0.100:22<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelMo
         <node id="n0::n1">
           <data key="d6">
             <y:SVGNode>
-              <y:Geometry height="80.0" width="80.0" x="-245.08273697368713" y="-514.9760107925259"/>
+              <y:Geometry height="60.0" width="60.0" x="-528.6043228181704" y="-646.9760107925259"/>
               <y:Fill color="#CCCCFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="15" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="37.515625" horizontalTextPosition="center" iconTextGap="4" modelName="sandwich" modelPosition="s" textColor="#232F3E" verticalTextPosition="bottom" visible="true" width="122.36669921875" x="-21.183349609375" xml:space="preserve" y="84.0">Internet gateway
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="30.8125" horizontalTextPosition="center" iconTextGap="4" modelName="sandwich" modelPosition="s" textColor="#232F3E" verticalTextPosition="bottom" visible="true" width="98.693359375" x="-19.3466796875" xml:space="preserve" y="64.0">Internet gateway
 "ddclient-test"</y:NodeLabel>
               <y:SVGNodeProperties usingVisualBounds="true"/>
               <y:SVGModel svgBoundsPolicy="0">
@@ -314,18 +308,17 @@ to 10.0.0.100:22<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelMo
       </graph>
     </node>
     <node id="n1">
-      <data key="d5"/>
       <data key="d6">
         <y:SVGNode>
-          <y:Geometry height="75.08599853515625" width="87.54189778159906" x="-2.0418977815990615" y="-512.519010060104"/>
+          <y:Geometry height="57.073983612060545" width="66.54189778159906" x="-355.04189778159906" y="-645.5130025985561"/>
           <y:Fill color="#CCCCFF" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="15" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="20.7578125" horizontalTextPosition="center" iconTextGap="4" modelName="sandwich" modelPosition="s" textColor="#232F3E" verticalTextPosition="bottom" visible="true" width="45.66748046875" x="20.93720865642453" xml:space="preserve" y="79.08599853515625">Client</y:NodeLabel>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="57.625" horizontalTextPosition="center" iconTextGap="4" modelName="sandwich" modelPosition="s" textColor="#D50000" verticalTextPosition="bottom" visible="true" width="182.306640625" x="-47.38237142170047" xml:space="preserve" y="79.08599853515625">
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="17.40625" horizontalTextPosition="center" iconTextGap="4" modelName="sandwich" modelPosition="s" textColor="#232F3E" verticalTextPosition="bottom" visible="true" width="37.333984375" x="14.60395670329953" xml:space="preserve" y="61.07398361206049">Client</y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="57.625" horizontalTextPosition="center" iconTextGap="4" modelName="sandwich" modelPosition="s" textColor="#D50000" verticalTextPosition="bottom" visible="true" width="182.306640625" x="-57.8823714217005" xml:space="preserve" y="61.07398361206049">
 
 
 ssh -p 2022 user@34.239.74.191</y:NodeLabel>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="44.21875" horizontalTextPosition="center" iconTextGap="4" modelName="sandwich" modelPosition="s" textColor="#304FFE" verticalTextPosition="bottom" visible="true" width="138.2734375" x="-25.36576985920047" xml:space="preserve" y="79.08599853515625">
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="44.21875" horizontalTextPosition="center" iconTextGap="4" modelName="sandwich" modelPosition="s" textColor="#304FFE" verticalTextPosition="bottom" visible="true" width="138.2734375" x="-35.8657698592005" xml:space="preserve" y="61.07398361206049">
 
 ssh user@34.239.74.191</y:NodeLabel>
           <y:SVGNodeProperties usingVisualBounds="true"/>
@@ -338,7 +331,7 @@ ssh user@34.239.74.191</y:NodeLabel>
     <edge id="n0::n0::n0::e0" source="n0::n0::n0::n0" target="n0::n0::n0::n1">
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="39.98951506435071" sy="5.0" tx="-19.95570186895378" ty="5.0"/>
+          <y:Path sx="24.99126843616807" sy="5.0" tx="-16.783642392107367" ty="5.0"/>
           <y:LineStyle color="#232F3E" type="line" width="2.0"/>
           <y:Arrows source="none" target="none"/>
           <y:BendStyle smoothed="false"/>
@@ -348,7 +341,7 @@ ssh user@34.239.74.191</y:NodeLabel>
     <edge id="n0::n0::e0" source="n0::n0::n0::n0" target="n0::n0::n1::n0">
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="-5.0" sy="65.0" tx="-5.0" ty="-40.00177593427827"/>
+          <y:Path sx="-5.0" sy="50.0" tx="-5.0" ty="-24.995633812897438"/>
           <y:LineStyle color="#232F3E" type="line" width="2.0"/>
           <y:Arrows source="none" target="none"/>
           <y:BendStyle smoothed="false"/>
@@ -358,7 +351,7 @@ ssh user@34.239.74.191</y:NodeLabel>
     <edge id="n0::e0" source="n0::n1" target="n0::n0::n0::n1">
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="-40.03125" sy="5.0" tx="19.96875" ty="5.0"/>
+          <y:Path sx="-30.004071857108556" sy="5.0" tx="16.771643547032" ty="5.0"/>
           <y:LineStyle color="#232F3E" type="line" width="2.0"/>
           <y:Arrows source="none" target="none"/>
           <y:BendStyle smoothed="false"/>
@@ -368,7 +361,7 @@ ssh user@34.239.74.191</y:NodeLabel>
     <edge id="n0::n0::n0::e1" source="n0::n0::n0::n2" target="n0::n0::n0::n0">
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="-17.43305725352087" sy="0.0" tx="38.662507701096956" ty="5.0"/>
+          <y:Path sx="-17.43305725352087" sy="0.0" tx="25.011860129626257" ty="11.00946655876703"/>
           <y:LineStyle color="#232F3E" type="line" width="2.0"/>
           <y:Arrows source="none" target="none"/>
           <y:BendStyle smoothed="false"/>
@@ -378,7 +371,7 @@ ssh user@34.239.74.191</y:NodeLabel>
     <edge id="n0::n0::n0::e2" source="n0::n0::n0::n0" target="n0::n0::n0::n4">
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="37.267697041910424" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:Path sx="29.98943212976735" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#D50000" type="line" width="2.0"/>
           <y:Arrows source="none" target="none"/>
           <y:BendStyle smoothed="false"/>
@@ -388,7 +381,7 @@ ssh user@34.239.74.191</y:NodeLabel>
     <edge id="n0::n0::n0::e3" source="n0::n0::n0::n0" target="n0::n0::n0::n1">
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="33.36087726631422" sy="-5.0" tx="-19.975118068112238" ty="-5.0"/>
+          <y:Path sx="25.025502434069608" sy="-5.0" tx="-16.783642392107367" ty="-5.0"/>
           <y:LineStyle color="#304FFE" type="line" width="2.0"/>
           <y:Arrows source="none" target="none"/>
           <y:BendStyle smoothed="false"/>
@@ -396,10 +389,9 @@ ssh user@34.239.74.191</y:NodeLabel>
       </data>
     </edge>
     <edge id="e0" source="n1" target="n0::n1">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="-44.22905110920024" sy="0.0" tx="40.02928734094871" ty="0.0"/>
+          <y:Path sx="-33.61915919652526" sy="0.0" tx="30.0050440925242" ty="1.1368683772161603E-13"/>
           <y:LineStyle color="#D50000" type="line" width="2.0"/>
           <y:Arrows source="none" target="none"/>
           <y:BendStyle smoothed="false"/>
@@ -407,7 +399,6 @@ ssh user@34.239.74.191</y:NodeLabel>
       </data>
     </edge>
     <edge id="n0::n0::n0::e4" source="n0::n0::n0::n5" target="n0::n0::n0::n1">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="-1.0466946484784785" sy="0.0" tx="17.45913859387929" ty="-5.0"/>
@@ -418,10 +409,9 @@ ssh user@34.239.74.191</y:NodeLabel>
       </data>
     </edge>
     <edge id="n0::e1" source="n0::n1" target="n0::n0::n0::n1">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="-36.621683278149135" sy="0.0" tx="20.03142664784332" ty="0.0"/>
+          <y:Path sx="-30.021188856059098" sy="0.0" tx="17.541908499812735" ty="0.0"/>
           <y:LineStyle color="#D50000" type="line" width="2.0"/>
           <y:Arrows source="none" target="none"/>
           <y:BendStyle smoothed="false"/>
@@ -429,10 +419,9 @@ ssh user@34.239.74.191</y:NodeLabel>
       </data>
     </edge>
     <edge id="e1" source="n1" target="n0::n1">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="-43.79178064750049" sy="-5.0" tx="39.99161026854557" ty="-5.0"/>
+          <y:Path sx="-33.28678341872423" sy="-3.8005743231434646" tx="30.02216109147497" ty="-3.800574323143337"/>
           <y:LineStyle color="#304FFE" type="line" width="2.0"/>
           <y:Arrows source="none" target="none"/>
           <y:BendStyle smoothed="false"/>
@@ -440,10 +429,9 @@ ssh user@34.239.74.191</y:NodeLabel>
       </data>
     </edge>
     <edge id="n0::n0::e1" source="n0::n0::n0::n0" target="n0::n0::n1::n1">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="0.0" sy="65.0" tx="0.0" ty="0.0"/>
+          <y:Path sx="0.0" sy="50.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#D50000" type="line" width="2.0"/>
           <y:Arrows source="none" target="none"/>
           <y:BendStyle smoothed="false"/>
@@ -451,10 +439,9 @@ ssh user@34.239.74.191</y:NodeLabel>
       </data>
     </edge>
     <edge id="n0::n0::n0::e5" source="n0::n0::n0::n1" target="n0::n0::n0::n4">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="-19.965884474926725" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:Path sx="-17.485439349085482" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#D50000" type="line" width="2.0"/>
           <y:Arrows source="none" target="none"/>
           <y:BendStyle smoothed="false"/>
@@ -462,7 +449,6 @@ ssh user@34.239.74.191</y:NodeLabel>
       </data>
     </edge>
     <edge id="n0::n0::n0::e6" source="n0::n0::n0::n3" target="n0::n0::n0::n4">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -473,10 +459,9 @@ ssh user@34.239.74.191</y:NodeLabel>
       </data>
     </edge>
     <edge id="n0::e2" source="n0::n1" target="n0::n0::n0::n5">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="-39.975659986935824" sy="-5.0" tx="0.0" ty="0.0"/>
+          <y:Path sx="-29.986954858158015" sy="-5.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#304FFE" type="line" width="2.0"/>
           <y:Arrows source="none" target="none"/>
           <y:BendStyle smoothed="false"/>
@@ -484,7 +469,6 @@ ssh user@34.239.74.191</y:NodeLabel>
       </data>
     </edge>
     <edge id="n0::n0::n0::e7" source="n0::n0::n0::n6" target="n0::n0::n0::n5">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -495,10 +479,9 @@ ssh user@34.239.74.191</y:NodeLabel>
       </data>
     </edge>
     <edge id="n0::n0::n1::e0" source="n0::n0::n1::n1" target="n0::n0::n1::n0">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="-39.14781967772012"/>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="-30.032938935391883"/>
           <y:LineStyle color="#D50000" type="line" width="2.0"/>
           <y:Arrows source="none" target="none"/>
           <y:BendStyle smoothed="false"/>
@@ -506,7 +489,6 @@ ssh user@34.239.74.191</y:NodeLabel>
       </data>
     </edge>
     <edge id="n0::n0::n1::e1" source="n0::n0::n1::n2" target="n0::n0::n1::n1">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -520,7 +502,7 @@ ssh user@34.239.74.191</y:NodeLabel>
   <data key="d7">
     <y:Resources>
       <y:Resource id="1">
-        <yed:ScaledIcon xScale="0.9302325581395349" yScale="0.9302325581395349">
+        <yed:ScaledIcon xScale="0.813953488372093" yScale="0.813953488372093">
           <yed:SvgIcon xml:space="preserve">&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
 &lt;!-- Created with Inkscape (http://www.inkscape.org/) --&gt;
 
@@ -588,7 +570,7 @@ ssh user@34.239.74.191</y:NodeLabel>
         </yed:ScaledIcon>
       </y:Resource>
       <y:Resource id="2">
-        <yed:ScaledIcon xScale="0.9302325581395349" yScale="0.9302325581395349">
+        <yed:ScaledIcon xScale="0.813953488372093" yScale="0.813953488372093">
           <yed:SvgIcon xml:space="preserve">&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
 &lt;!-- Created with Inkscape (http://www.inkscape.org/) --&gt;
 
@@ -652,7 +634,7 @@ ssh user@34.239.74.191</y:NodeLabel>
         </yed:ScaledIcon>
       </y:Resource>
       <y:Resource id="3">
-        <yed:ScaledIcon xScale="1.0" yScale="1.0">
+        <yed:ScaledIcon xScale="0.813953488372093" yScale="0.813953488372093">
           <yed:SvgIcon xml:space="preserve">&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
 &lt;!-- Created with Inkscape (http://www.inkscape.org/) --&gt;
 
@@ -718,7 +700,7 @@ ssh user@34.239.74.191</y:NodeLabel>
       <y:Resource id="4" xml:space="preserve">&lt;svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"&gt;&lt;title&gt;Amazon-EC2_T2-Instance_light-bg&lt;/title&gt;&lt;path d="M19.35,30.09v-8.8H16.11V19.44h8.78v1.85H21.65v8.8Z" style="fill:#d86613"/&gt;&lt;path d="M26.2,20.41a6,6,0,0,1,1.68-.94,5.51,5.51,0,0,1,1.82-.29A3.29,3.29,0,0,1,32,20a2.78,2.78,0,0,1,.88,2.15,3.59,3.59,0,0,1-.44,1.66,10.19,10.19,0,0,1-1.41,1.94c-.65.72-1.51,1.57-2.6,2.56h4.89v1.78H25.92V28.43q2-2,2.94-3.1a11.33,11.33,0,0,0,1.35-1.78,2.62,2.62,0,0,0,.38-1.25,1.2,1.2,0,0,0-.35-.91,1.36,1.36,0,0,0-.95-.33,4.2,4.2,0,0,0-1.48.3,7.79,7.79,0,0,0-1.61.88Z" style="fill:#d86613"/&gt;&lt;path d="M44.31,44.31H5.69V5.69H44.31Zm-36.62-2H42.31V7.69H7.69Z" style="fill:#d86613"/&gt;&lt;rect x="11.21" y="1" width="2" height="5.69" style="fill:#d86613"/&gt;&lt;rect x="17.48" y="1" width="2" height="5.69" style="fill:#d86613"/&gt;&lt;rect x="23.76" y="1" width="2" height="5.69" style="fill:#d86613"/&gt;&lt;rect x="30.04" y="1" width="2" height="5.69" style="fill:#d86613"/&gt;&lt;rect x="36.32" y="1" width="2" height="5.69" style="fill:#d86613"/&gt;&lt;rect x="11.21" y="43.31" width="2" height="5.69" style="fill:#d86613"/&gt;&lt;rect x="17.48" y="43.31" width="2" height="5.69" style="fill:#d86613"/&gt;&lt;rect x="23.76" y="43.31" width="2" height="5.69" style="fill:#d86613"/&gt;&lt;rect x="30.04" y="43.31" width="2" height="5.69" style="fill:#d86613"/&gt;&lt;rect x="36.32" y="43.31" width="2" height="5.69" style="fill:#d86613"/&gt;&lt;rect x="43.31" y="11.45" width="5.69" height="2" style="fill:#d86613"/&gt;&lt;rect x="43.31" y="17.72" width="5.69" height="2" style="fill:#d86613"/&gt;&lt;rect x="43.31" y="24" width="5.69" height="2" style="fill:#d86613"/&gt;&lt;rect x="43.31" y="30.28" width="5.69" height="2" style="fill:#d86613"/&gt;&lt;rect x="43.31" y="36.55" width="5.69" height="2" style="fill:#d86613"/&gt;&lt;rect x="1" y="11.45" width="5.69" height="2" style="fill:#d86613"/&gt;&lt;rect x="1" y="17.72" width="5.69" height="2" style="fill:#d86613"/&gt;&lt;rect x="1" y="24" width="5.69" height="2" style="fill:#d86613"/&gt;&lt;rect x="1" y="30.28" width="5.69" height="2" style="fill:#d86613"/&gt;&lt;rect x="1" y="36.55" width="5.69" height="2" style="fill:#d86613"/&gt;&lt;/svg&gt;</y:Resource>
       <y:Resource id="5" xml:space="preserve">&lt;svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"&gt;&lt;title&gt;Amazon-VPC_Elastic-Network-Interface_light-bg&lt;/title&gt;&lt;path d="M25,48.5A23.5,23.5,0,1,1,48.5,25,23.52,23.52,0,0,1,25,48.5Zm0-45A21.5,21.5,0,1,0,46.5,25,21.52,21.52,0,0,0,25,3.5Z" style="fill:#693cc5"/&gt;&lt;path d="M13.75,37.25H10.37v-2h2.38V16.62H10.37v-2h3.38a1,1,0,0,1,1,1V36.25A1,1,0,0,1,13.75,37.25Z" style="fill:#693cc5"/&gt;&lt;path d="M37.19,35.38H32.5a1,1,0,0,1-1-1V32.56H29.75v1.82a1,1,0,0,1-1,1H19.37a1,1,0,0,1-1-1V32.56H17.5a1,1,0,0,1-1-1V17.5a1,1,0,0,1,1-1H40.94a1,1,0,0,1,1,1V31.56a1,1,0,0,1-1,1H38.19v1.82A1,1,0,0,1,37.19,35.38Zm-3.69-2h2.69V31.56a1,1,0,0,1,1-1h2.75V18.5H18.5V30.56h.87a1,1,0,0,1,1,1v1.82h7.38V31.56a1,1,0,0,1,1-1H32.5a1,1,0,0,1,1,1Z" style="fill:#693cc5"/&gt;&lt;path d="M35.31,28.81H22.19a1,1,0,0,1-1-1V21.25a1,1,0,0,1,1-1H35.31a1,1,0,0,1,1,1v6.56A1,1,0,0,1,35.31,28.81Zm-12.12-2H34.31V22.25H23.19Z" style="fill:#693cc5"/&gt;&lt;rect x="27.75" y="21.25" width="2" height="6.56" style="fill:#693cc5"/&gt;&lt;/svg&gt;</y:Resource>
       <y:Resource id="6">
-        <yed:ScaledIcon xScale="1.0" yScale="1.0">
+        <yed:ScaledIcon xScale="0.813953488372093" yScale="0.813953488372093">
           <yed:SvgIcon xml:space="preserve">&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
 &lt;!-- Created with Inkscape (http://www.inkscape.org/) --&gt;
 

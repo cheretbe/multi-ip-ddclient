@@ -16,7 +16,7 @@ Network diagram for the VPC
 
 ### Notes
 
-This VPC is used solely for the purpose of testing multi-ip-ddclient in different
+This VPC is used solely for the purpose of testing **multi-ip-ddclient** in different
 operating systems. It should not be used in a production environment.
 
 * It has relaxed security: ssh ports accessible from anywhere both

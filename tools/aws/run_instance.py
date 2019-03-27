@@ -35,8 +35,21 @@ ec2 = boto3.resource("ec2")
 ami_names_map = {
     "ubuntu-xenial": "ubuntu/images/hvm-ssd/ubuntu-xenial*",
     "ubuntu-bionic": "ubuntu/images/hvm-ssd/ubuntu-bionic*",
-    "centos-7": ""}
+    "centos-7": "RHEL-7.?*GA*"
+}
 image_name = ami_names_map[options.linux_distribution]
+instance_types_map = {
+    "ubuntu-xenial": "t2.nano",
+    "ubuntu-bionic": "t2.nano",
+    "centos-7": "t2.micro"
+}
+instance_type = instance_types_map[options.linux_distribution]
+user_names_map = {
+    "ubuntu-xenial": "ubuntu",
+    "ubuntu-bionic": "ubuntu",
+    "centos-7": "ec2-user"
+}
+user_name = user_names_map[options.linux_distribution]
 
 if options.is_client:
     print("Creating client instance")
@@ -84,10 +97,12 @@ subnet_filter = [{"Name": "tag:Name", "Values": [subnet_name]}]
 subnet_id = list(ec2.subnets.filter(Filters=subnet_filter))[0].id
 print("Subnet ID: " + subnet_id)
 
+print("Instance type: " + instance_type)
+
 print("\nRunning instance")
 instance = list(ec2.create_instances(
     ImageId=image_id,
-    InstanceType="t2.nano",
+    InstanceType=instance_type,
     KeyName="test-key-pair",
     SecurityGroupIds=[security_group_id],
     SubnetId=subnet_id,
@@ -127,7 +142,7 @@ if not options.is_client:
 
     subprocess.check_call(("ssh", "-i", "~/.ssh/aws-test-key-pair.pem",
         "-o", "StrictHostKeyChecking=no",
-        "ubuntu@" + instance.public_ip_address, "uname -a"
+        user_name + "@" + instance.public_ip_address, "uname -a"
     ))
 
     print("Configuring the instance")
@@ -135,30 +150,30 @@ if not options.is_client:
     subprocess.check_call(("scp", "-o", "StrictHostKeyChecking=no",
         "-i", "~/.ssh/aws-test-key-pair.pem",
         os.path.join(script_dir, "config_router.sh"),
-        "ubuntu@" + instance.public_ip_address + ":"
+        user_name + "@" + instance.public_ip_address + ":"
     ))
     # Uploading 'wait_for_eth1_ip.sh'
     subprocess.check_call(("scp", "-i", "~/.ssh/aws-test-key-pair.pem",
         os.path.join(script_dir, "wait_for_eth1_ip.sh"),
-        "ubuntu@" + instance.public_ip_address + ":"
+        user_name + "@" + instance.public_ip_address + ":"
     ))
     # Running 'config_router.sh'
     subprocess.check_call(("ssh", "-i", "~/.ssh/aws-test-key-pair.pem",
         "-o", "StrictHostKeyChecking=no",
-        "ubuntu@" + instance.public_ip_address, "sudo /home/ubuntu/config_router.sh"
+        user_name + "@" + instance.public_ip_address, "sudo /home/ubuntu/config_router.sh"
     ))
 
     print("\n\nConnect to the instance using the following command:")
-    print("ssh -i ~/.ssh/aws-test-key-pair.pem ubuntu@{}".format(instance.public_ip_address))
+    print("ssh -i ~/.ssh/aws-test-key-pair.pem {}@{}".format(user_name, instance.public_ip_address))
 else:
     aws_common.wait_for_ssh_port(ip=router_instance.public_ip_address, port=2022)
 
     subprocess.check_call(("ssh", "-p", "2022", "-i", "~/.ssh/aws-test-key-pair.pem",
         "-o", "StrictHostKeyChecking=no",
-        "ubuntu@" + router_instance.public_ip_address, "uname -a"
+        user_name + "@" + router_instance.public_ip_address, "uname -a"
     ))
 
     print("\n\nConnect to the instance using the following command:")
-    print("ssh -p 2022 -i ~/.ssh/aws-test-key-pair.pem ubuntu@{}".format(
-        router_instance.public_ip_address)
+    print("ssh -p 2022 -i ~/.ssh/aws-test-key-pair.pem {}@{}".format(
+        user_name, router_instance.public_ip_address)
     )

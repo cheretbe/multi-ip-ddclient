@@ -28,7 +28,7 @@ def port_is_open(host, port):
 
 def wait_for_ssh_port(ip, port=22):
     print("Waiting for SSH port {} to become avialable...".format(port))
-    retry_count = 5
+    retry_count = 15
     sleep_time = 5
     for i in range(retry_count):
         if port_is_open(ip, port):

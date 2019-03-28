@@ -21,7 +21,7 @@ parser.add_argument("-n", "--instance-name", dest="instance_name", default=None,
         "'ddclient-test-router' for a router)"
 )
 parser.add_argument("-d", "--linux-distribution", default="ubuntu-xenial",
-    choices=["ubuntu-xenial", "ubuntu-bionic", "centos-7"],
+    choices=["ubuntu-xenial", "ubuntu-bionic", "rhel-6", "rhel-7"],
     help="Linux distribution (default: ubuntu-xenial)")
 
 options = parser.parse_args()
@@ -35,19 +35,22 @@ ec2 = boto3.resource("ec2")
 ami_names_map = {
     "ubuntu-xenial": "ubuntu/images/hvm-ssd/ubuntu-xenial*",
     "ubuntu-bionic": "ubuntu/images/hvm-ssd/ubuntu-bionic*",
-    "centos-7": "RHEL-7.?*GA*"
+    "rhel-6": "RHEL-6.?*GA*",
+    "rhel-7": "RHEL-7.?*GA*"
 }
 image_name = ami_names_map[options.linux_distribution]
 instance_types_map = {
     "ubuntu-xenial": "t2.nano",
     "ubuntu-bionic": "t2.nano",
-    "centos-7": "t2.micro"
+    "rhel-6": "t2.micro",
+    "rhel-7": "t2.micro"
 }
 instance_type = instance_types_map[options.linux_distribution]
 user_names_map = {
     "ubuntu-xenial": "ubuntu",
     "ubuntu-bionic": "ubuntu",
-    "centos-7": "ec2-user"
+    "rhel-6": "ec2-user",
+    "rhel-7": "ec2-user"
 }
 user_name = user_names_map[options.linux_distribution]
 

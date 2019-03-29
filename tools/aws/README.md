@@ -5,6 +5,7 @@ VPC.
 
 * [Overview](#overview)
 * [Notes](#notes)
+* [Initial Setup](#initial-setup)
 * [Usage Examples](#usage-examples)
 * [Useful Links](#useful-links)
 
@@ -20,11 +21,34 @@ This VPC is used solely for the purpose of testing **multi-ip-ddclient** in diff
 operating systems. It should not be used in a production environment.
 
 * It has relaxed security: ssh ports accessible from anywhere both
-for public and private subnets, default user names are used.
+for public and private subnets, default user names with passwordless sudo
+are used.
 * Secondary network interface is not usable. It is present only to emulate
 IP address change.
 * :warning: External IP address is lost on 'ddclient-test-router' instance
 restart. After that the VPC becomes inaccessible from the outside.
+
+### Initial Setup
+
+1. All scripts expect that AWS shared config and credentials files are properly
+set up. It could be done either with AWS CLI
+```shell
+# Interactively
+aws configure
+# Using set command
+aws configure set aws_access_key_id default_access_key
+aws configure set aws_secret_access_key default_secret_key
+aws configure set default.region us-west-2
+```
+or by manually editing `~/.aws/credentials` and `~/.aws/config` files.
+
+2. AWS account, that is used to run scripts, has to have active subscriptions to
+Ubuntu 16.04 and 18.04 AMIs:
+* Ubuntu 16.04: https://aws.amazon.com/marketplace/pp/B01JBL2M0O
+* Ubuntu 18.04: https://aws.amazon.com/marketplace/pp/B07CQ33QKV
+Subscriptions management:
+* https://console.aws.amazon.com/marketplace/home?region=us-east-1#/subscriptions
+* https://aws.amazon.com/marketplace/library?ref_=header_user_your_software
 
 ### Usage Examples
 

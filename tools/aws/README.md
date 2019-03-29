@@ -46,7 +46,7 @@ or by manually editing `~/.aws/credentials` and `~/.aws/config` files.
 Ubuntu 16.04 and 18.04 AMIs:
 * Ubuntu 16.04: https://aws.amazon.com/marketplace/pp/B01JBL2M0O
 * Ubuntu 18.04: https://aws.amazon.com/marketplace/pp/B07CQ33QKV
-Subscriptions management:
+<br/>Subscriptions management:
 * https://console.aws.amazon.com/marketplace/home?region=us-east-1#/subscriptions
 * https://aws.amazon.com/marketplace/library?ref_=header_user_your_software
 

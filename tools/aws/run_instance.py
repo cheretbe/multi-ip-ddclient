@@ -21,7 +21,8 @@ parser.add_argument("-n", "--instance-name", dest="instance_name", default=None,
         "'ddclient-test-router' for a router)"
 )
 parser.add_argument("-d", "--linux-distribution", default="ubuntu-xenial",
-    choices=["ubuntu-xenial", "ubuntu-bionic", "rhel-6", "rhel-7"],
+    choices=["ubuntu-xenial", "ubuntu-bionic", "rhel-6", "rhel-7", "centos-6",
+        "centos-7"],
     help="Linux distribution (default: ubuntu-xenial)")
 
 options = parser.parse_args()
@@ -50,6 +51,13 @@ ami_filters_map = {
     "rhel-7": [
         {"Name": "name", "Values": ["RHEL-7.?*GA*"]},
         {"Name": "owner-id", "Values": ["309956199498"]}
+    ],
+    # https://wiki.centos.org/Cloud/AWS
+    "centos-6": [
+        {"Name": "product-code", "Values": ["6x5jmcajty9edm3f211pqjfn2"]}
+    ],
+    "centos-7": [
+        {"Name": "product-code", "Values": ["aw0evgkw8e5c1q413zgy5pjce"]}
     ]
 }
 ami_filter = ami_filters_map[options.linux_distribution]
@@ -57,14 +65,18 @@ instance_types_map = {
     "ubuntu-xenial": "t2.micro",
     "ubuntu-bionic": "t2.micro",
     "rhel-6": "t2.micro",
-    "rhel-7": "t2.micro"
+    "rhel-7": "t2.micro",
+    "centos-6": "t2.micro",
+    "centos-7": "t2.micro"
 }
 instance_type = instance_types_map[options.linux_distribution]
 user_names_map = {
     "ubuntu-xenial": "ubuntu",
     "ubuntu-bionic": "ubuntu",
     "rhel-6": "ec2-user",
-    "rhel-7": "ec2-user"
+    "rhel-7": "ec2-user",
+    "centos-6": "centos",
+    "centos-7": "centos"
 }
 user_name = user_names_map[options.linux_distribution]
 

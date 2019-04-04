@@ -32,16 +32,30 @@ if not options.is_client and (options.linux_distribution != "ubuntu-xenial"):
 
 ec2 = boto3.resource("ec2")
 
-ami_names_map = {
-    "ubuntu-xenial": "ubuntu/images/hvm-ssd/ubuntu-xenial*",
-    "ubuntu-bionic": "ubuntu/images/hvm-ssd/ubuntu-bionic*",
-    "rhel-6": "RHEL-6.?*GA*",
-    "rhel-7": "RHEL-7.?*GA*"
+ami_filters_map = {
+    # https://askubuntu.com/questions/53582/how-do-i-know-what-ubuntu-ami-to-launch-on-ec2/53586#53586
+    "ubuntu-xenial": [
+        {"Name": "name", "Values": ["ubuntu/images/hvm-ssd/ubuntu-xenial*"]},
+        {"Name": "owner-id", "Values": ["099720109477"]}
+    ],
+    "ubuntu-bionic": [
+        {"Name": "name", "Values": ["ubuntu/images/hvm-ssd/ubuntu-bionic*"]},
+        {"Name": "owner-id", "Values": ["099720109477"]}
+    ],
+    # https://access.redhat.com/solutions/15356
+    "rhel-6": [
+        {"Name": "name", "Values": ["RHEL-6.?*GA*"]},
+        {"Name": "owner-id", "Values": ["309956199498"]}
+    ],
+    "rhel-7": [
+        {"Name": "name", "Values": ["RHEL-7.?*GA*"]},
+        {"Name": "owner-id", "Values": ["309956199498"]}
+    ]
 }
-image_name = ami_names_map[options.linux_distribution]
+ami_filter = ami_filters_map[options.linux_distribution]
 instance_types_map = {
-    "ubuntu-xenial": "t2.nano",
-    "ubuntu-bionic": "t2.nano",
+    "ubuntu-xenial": "t2.micro",
+    "ubuntu-bionic": "t2.micro",
     "rhel-6": "t2.micro",
     "rhel-7": "t2.micro"
 }
@@ -81,12 +95,12 @@ else:
 print("Private IP: " + options.private_ip)
 print("Instance name: " + options.instance_name)
 print("Distribution: " + options.linux_distribution)
-print("Image name: " + image_name)
 
 print("Getting image ID")
-filtered_images = ec2.images.filter(Filters=[{"Name": "name", "Values": [image_name]}])
-image_id = sorted(filtered_images, key=lambda item: item.creation_date)[-1].id
-print("Image ID: " + image_id)
+filtered_images = ec2.images.filter(Filters=ami_filter)
+image = sorted(filtered_images, key=lambda item: item.creation_date)[-1]
+print("Image ID: " + image.id)
+print("Image name: " + image.name)
 
 print("Security group name: " + security_group_name)
 print("Getting security group ID")
@@ -104,7 +118,7 @@ print("Instance type: " + instance_type)
 
 print("\nRunning instance")
 instance = list(ec2.create_instances(
-    ImageId=image_id,
+    ImageId=image.id,
     InstanceType=instance_type,
     KeyName="test-key-pair",
     SecurityGroupIds=[security_group_id],

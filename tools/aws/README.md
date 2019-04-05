@@ -51,6 +51,18 @@ Ubuntu 16.04, Ubuntu 18.04, CentOS 6 and CentOS 7 AMIs:
 <br/>Subscriptions management:
 * https://console.aws.amazon.com/marketplace/home?region=us-east-1#/subscriptions
 * https://aws.amazon.com/marketplace/library?ref_=header_user_your_software
+-----
+All used AMIs are free tier eligible at the time of writing. There is no
+automated way to check if it is still the case. To check manually use the
+following command to list AMI IDs:
+```shell
+./run_instance.py --list-ami-ids
+```
+Then go to EC2 Dashboard in AWS console and click the `Launch Instance` button.
+Enter AMI ID in the search field and press <kbd>Enter</kbd>. Select appropriate
+image and make sure that 't2.micro' instance type has a `Free tier eligible`
+label like in the example below:
+![free_tier_example](images/free_tier.png)
 
 ### Usage Examples
 

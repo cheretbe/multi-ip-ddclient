@@ -61,7 +61,7 @@ following command to list AMI IDs:
 Then go to EC2 Dashboard in AWS console and click the `Launch Instance` button.
 Enter AMI ID in the search field and press <kbd>Enter</kbd>. Select appropriate
 image and make sure that 't2.micro' instance type has a `Free tier eligible`
-label like in the example below:
+label like in the example below:<br/>
 ![free_tier_example](images/free_tier.png)
 
 ### Usage Examples

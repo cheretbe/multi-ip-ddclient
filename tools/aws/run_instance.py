@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import os
+import sys
 import argparse
 import time
 import subprocess
@@ -24,12 +25,10 @@ parser.add_argument("-d", "--linux-distribution", default="ubuntu-xenial",
     choices=["ubuntu-xenial", "ubuntu-bionic", "rhel-6", "rhel-7", "centos-6",
         "centos-7"],
     help="Linux distribution (default: ubuntu-xenial)")
+parser.add_argument("--list-ami-ids", action="store_true", default=False,
+    help="list AMI ID for each Linux distribution and exit")
 
 options = parser.parse_args()
-
-if not options.is_client and (options.linux_distribution != "ubuntu-xenial"):
-    raise aws_common.NoTracebackException("Only 'ubuntu-xenial' distribution "
-        "is supported for router instances")
 
 ec2 = boto3.resource("ec2")
 
@@ -60,7 +59,7 @@ ami_filters_map = {
         {"Name": "product-code", "Values": ["aw0evgkw8e5c1q413zgy5pjce"]}
     ]
 }
-ami_filter = ami_filters_map[options.linux_distribution]
+
 instance_types_map = {
     "ubuntu-xenial": "t2.micro",
     "ubuntu-bionic": "t2.micro",
@@ -69,7 +68,7 @@ instance_types_map = {
     "centos-6": "t2.micro",
     "centos-7": "t2.micro"
 }
-instance_type = instance_types_map[options.linux_distribution]
+
 user_names_map = {
     "ubuntu-xenial": "ubuntu",
     "ubuntu-bionic": "ubuntu",
@@ -78,6 +77,23 @@ user_names_map = {
     "centos-6": "centos",
     "centos-7": "centos"
 }
+
+if options.list_ami_ids:
+    print("Listing AMI IDs")
+    for dist, ami_filter in ami_filters_map.items():
+        # print(dist, ami_filter)
+        filtered_images = ec2.images.filter(Filters=ami_filter)
+        image = sorted(filtered_images, key=lambda item: item.creation_date)[-1]
+        print("{}: {}".format(dist, image.id))
+    sys.exit(0)
+
+
+if not options.is_client and (options.linux_distribution != "ubuntu-xenial"):
+    raise aws_common.NoTracebackException("Only 'ubuntu-xenial' distribution "
+        "is supported for router instances")
+
+ami_filter = ami_filters_map[options.linux_distribution]
+instance_type = instance_types_map[options.linux_distribution]
 user_name = user_names_map[options.linux_distribution]
 
 if options.is_client:

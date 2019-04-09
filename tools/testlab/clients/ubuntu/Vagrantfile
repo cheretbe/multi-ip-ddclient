@@ -1,3 +1,17 @@
+# env_vars = ["var1", "var2"]
+env_vars = []
+
+
+env_vars_with_values = Hash.new
+env_vars.each do |env_var|
+  if not ENV.has_key?(env_var) then
+    puts "Environment variable '#{env_var}' is not defined"
+    abort "For this Vagrantfile to work correctly the following " +
+      "environment variables need to be defined: " + env_vars.join(", ")
+  end
+  env_vars_with_values[env_var] = ENV[env_var]
+end
+
 Vagrant.configure("2") do |config|
   # config.vm.box = "ubuntu/xenial64"
   config.vm.box = "ubuntu/bionic64"
@@ -14,4 +28,7 @@ Vagrant.configure("2") do |config|
   config.vm.hostname = "ubuntu"
 
   config.vm.provision "shell", path: "../../provision/client.sh", keep_color: true
+
+  config.vm.provision "shell", path: "../../provision/env_vars.sh", keep_color: true,
+    env: env_vars_with_values, args: [env_vars.join(" "), "second"], privileged: false
 end

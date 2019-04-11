@@ -1,0 +1,3 @@
+```shell
+ zypper install terminfo
+ ```

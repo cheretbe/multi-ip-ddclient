@@ -53,7 +53,7 @@ Vagrant.configure("2") do |config|
     # https://github.com/JustinCarmony/vagrant-salt-example
     # https://medium.com/@Joachim8675309/vagrant-provisioning-with-saltstack-50dab12ce6c7
 
-    salt.minion_config = "../../saltstack/etc/minion"
+    salt.minion_config = "./saltstack_minion"
     salt.masterless = true
 
     salt.run_highstate = true

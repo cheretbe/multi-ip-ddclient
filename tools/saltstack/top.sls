@@ -4,3 +4,4 @@ base:
 aws-cli:
   'aws-cli':
     - aws
+    # - python3

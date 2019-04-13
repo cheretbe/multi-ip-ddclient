@@ -1,12 +1,6 @@
-#file_roots:
-#  base:
-#    - /srv/salt/base
-#  qa:
-#    - /srv/salt/aws_cli
-
 base:
   '*':
-    - webserver
-awscli:
+    - utils
+aws-cli:
   'aws-cli':
-    - test
+    - aws

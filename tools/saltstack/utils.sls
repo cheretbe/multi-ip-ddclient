@@ -2,7 +2,7 @@ Update system packages:
   pkg.uptodate:
     - refresh: True
 
-mc:
+utils:
   pkg:
     - names
       - mc

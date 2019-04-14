@@ -22,6 +22,12 @@ Vagrant.configure("2") do |config|
     centos_6.vm.hostname = "client-centos-6"
   end
 
+  config.vm.define :"centos-7", autostart: false do |centos_6|
+    centos_6.vm.box = "centos/7"
+    centos_6.vbguest.auto_update = true
+    centos_6.vm.hostname = "client-centos-7"
+  end
+
   config.vm.provision :salt do |salt|
     # [!!!!!] Change after debug
     salt.minion_config = "../aws-cli/saltstack_minion"

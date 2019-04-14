@@ -28,6 +28,12 @@ Vagrant.configure("2") do |config|
     centos_6.vm.hostname = "client-centos-7"
   end
 
+  config.vm.define :"opensuse-15", autostart: false do |opensuse_15|
+    opensuse_15.vm.box = "opensuse/openSUSE-15.0-x86_64"
+    # opensuse_15.vbguest.auto_update = true
+    opensuse_15.vm.hostname = "client-opensuse-15"
+  end
+
   config.vm.provision :salt do |salt|
     # [!!!!!] Change after debug
     salt.minion_config = "../aws-cli/saltstack_minion"
